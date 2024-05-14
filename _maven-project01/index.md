@@ -18,3 +18,12 @@
 * 3、定义坐标的 groupId，artifactId，version
 * 4、点击刷新按钮，引入最新加入的坐标
 * 如果引入的依赖在本地仓库不存在，将会连接远程仓库/中央仓库，然后下载依赖
+
+## 依赖传递
+* 依赖具有传递性
+* 直接传递：在当前项目中通过依赖配置建立的依赖关系
+* 间接传递：被依赖的资源如果依赖其他资源，当前项目间接依赖其他资源
+
+## 排除依赖
+* 排除依赖指主动断开依赖的资源，被排除的资源无需指定版本
+* <exclusions><exclusion><groupid></groupid><artifactid></artifactid></exclusion></exclusions>

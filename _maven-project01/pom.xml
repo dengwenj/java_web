@@ -18,7 +18,19 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
-            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>vip.dengwj</groupId>
+            <artifactId>_maven-project02</artifactId>
+            <version>1.0-SNAPSHOT</version>
+
+            <!--    依赖排除， 项目1想排除项目2里面的 commons-io 依赖 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-io</groupId>
+                    <artifactId>commons-io</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 </project>
