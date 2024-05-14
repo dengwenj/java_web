@@ -27,3 +27,15 @@
 ## 排除依赖
 * 排除依赖指主动断开依赖的资源，被排除的资源无需指定版本
 * <exclusions><exclusion><groupid></groupid><artifactid></artifactid></exclusion></exclusions>
+
+## 依赖范围
+* 依赖的 jar 包，默认情况下，可以在任何地方使用。可以通过<scope>...</scope> 设置其作用范围
+* 作用范围：
+* 主程序范围有效。（main 文件夹范围内）
+* 测试程序范围有效。（test 文件夹范围内）
+* 是否参与打包运行。（package 指令范围内）
+* scope 值        主程序        测试程序       打包(运行)      范例
+* compile(默认)     Y             Y            Y            log4j
+* test             N             Y             N            junit
+* provided         Y             Y             N            servlet-api
+* runtime          N             Y             Y            jdbc 驱动
