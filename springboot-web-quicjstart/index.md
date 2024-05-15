@@ -31,3 +31,10 @@
 * 1、spring-boot-starter-web：包含了 web 应用开发所需要的常见依赖（maven 的依赖传递）
 * 2、spring-boot-starter-test：包含了单元测试所需要的常见依赖
 * Springboot 之所以可以启动 web 服务器，是因为它内嵌了 tomcat
+
+## 请求响应
+* 前端控制器：HttpServletRequest、DispatcherServlet、HttpServletResponse 
+* HttpServletRequest：获取请求数据
+* HttpServletResponse：设置响应数据
+* BS架构：Browser/server，浏览器/服务器架构模式。客户端只需要浏览器，应用程序的逻辑和数据都存储在服务端
+* CS架构：Client/Server，客户端（可以保存在本地）/服务器架构模式
