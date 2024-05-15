@@ -3,6 +3,7 @@ package vip.dengwj.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import vip.dengwj.pojo.User;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -28,6 +29,20 @@ public class RequestController {
     @RequestMapping("/getParams")
     public String getParams(@RequestParam(name = "name", required = false) String username, int age) {
         System.out.println(username + age);
+        return "OK";
+    }
+
+    // 实体参数：请求参数和形参对象属性名相同即可
+    @RequestMapping("/simplePojo")
+    public String simplePojo(User user) {
+        System.out.println(user);
+        return "OK";
+    }
+
+    // 复杂实体参数
+    @RequestMapping("/complexPojo")
+    public String complexPojo(User user) {
+        System.out.println(user); // User{name=pm, age=24, address=Address{province = 上海, city = 上海}}
         return "OK";
     }
 }
