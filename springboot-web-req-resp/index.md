@@ -72,3 +72,24 @@ public class RequestController {
     }
 }
 ```
+
+## 数组集合参数
+* 数组：请求参数名与形参中数组变量名相同，可以直接使用数组封装
+* 集合：请求参数名与形参中集合变量名相同，通过 @RequestParam 绑定参数关系
+```java
+public class RequestController {
+    // 数组参数
+    @RequestMapping("/arrayParams")
+    public String arrayParams(String[] hobby) {
+        System.out.println(Arrays.toString(hobby));
+        return "OK";
+    }
+
+    // 集合参数
+    @RequestMapping("/listParams")
+    public String listParams(@RequestParam List<String> hobby) {
+        System.out.println(hobby);
+        return "OK";
+    }
+}
+``` 

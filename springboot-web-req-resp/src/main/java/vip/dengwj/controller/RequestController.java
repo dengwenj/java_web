@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import vip.dengwj.pojo.User;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
+import java.util.List;
 
 @RestController
 public class RequestController {
@@ -43,6 +45,20 @@ public class RequestController {
     @RequestMapping("/complexPojo")
     public String complexPojo(User user) {
         System.out.println(user); // User{name=pm, age=24, address=Address{province = 上海, city = 上海}}
+        return "OK";
+    }
+
+    // 数组参数
+    @RequestMapping("/arrayParams")
+    public String arrayParams(String[] hobby) {
+        System.out.println(Arrays.toString(hobby));
+        return "OK";
+    }
+
+    // 集合参数
+    @RequestMapping("/listParams")
+    public String listParams(@RequestParam List<String> hobby) {
+        System.out.println(hobby);
         return "OK";
     }
 }
