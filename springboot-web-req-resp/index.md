@@ -93,3 +93,33 @@ public class RequestController {
     }
 }
 ``` 
+
+## 日期时间参数
+* 请求参数名与形参中数组变量名相同，通过 @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") 绑定关系
+```java
+@RestController
+public class RequestController {
+    // 日期参数
+    @RequestMapping("/dateParams")
+    public String dateParams(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime updateTime) {
+        String format = updateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        System.out.println(format); // 2024-05-16 16:10:00
+        return "OK";
+    }
+}
+```
+
+## json 参数
+* json 数据键名和形参对象属性名相同，定义 POJO 类型形参即可接收参数，需要使用 @RequestBody 标识
+```java
+@RestController
+public class RequestController {
+    // User 实体类
+    // json 参数 必须要加上 @RequestBody 注解
+    @RequestMapping("/jsonParams")
+    public String jsonParams(@RequestBody User user) {
+        System.out.println(user); // User{name='朴睦', age=24, address=Address{province = 上海, city = 上海}}
+        return "OK";
+    }
+}
+```

@@ -1,6 +1,7 @@
 package vip.dengwj.controller;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -70,6 +71,14 @@ public class RequestController {
     public String dateParams(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime updateTime) {
         String format = updateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         System.out.println(format); // 2024-05-16 16:10:00
+        return "OK";
+    }
+
+    // User 实体类
+    // json 参数 必须要加上 @RequestBody 注解
+    @RequestMapping("/jsonParams")
+    public String jsonParams(@RequestBody User user) {
+        System.out.println(user); // User{name='朴睦', age=24, address=Address{province = 上海, city = 上海}}
         return "OK";
     }
 }
