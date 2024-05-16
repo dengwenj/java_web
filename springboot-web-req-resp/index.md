@@ -253,3 +253,13 @@ public class Result {
 * 2、为 Controller 及 Service 注入运行时，依赖的对象 @Autowired
 * @Component // 将当前类交给 IOC 容器管理，成为 IOC 容器中的 bean
 * @Autowired // 运行时，IOC 容器会提供该类型的 bean 对象，并赋值给该变量 - 依赖注入
+
+## Bean 对象的声明
+* 要把某个对象交给 IOC 容器管理，需要再对应的类上加上如下注解之一：
+* @Component：声明 bean 的基础注解，不属于以下三类时，用次注解（例如：工具类）
+* @Controller：@Component 的衍生注解，标注在控制器类上
+* @Service：@Component 的衍生注解，标注在业务类上
+* @Repository：@Component 的衍生注解，标注在数据访问类上（由于与 mybatis 整合，用的少）
+* 注意事项：
+* 1、声明 bean 的时候，可以通过 value 属性指定 bean 的名字，如果没有指定，默认为类名首字母小写
+* 2、使用以上四个注解都可以声明 bean，但是在 springboot 集成 web 开发中，声明控制器 bean 只能用 @Controller
