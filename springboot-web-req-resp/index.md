@@ -123,3 +123,17 @@ public class RequestController {
     }
 }
 ```
+
+## 路径参数
+* 通过请求 URL 直接传递参数，使用 {...} 来标识该路径参数，需要使用 @PathVariable 获取路径参数
+```java
+@RestController
+public class RequestController {
+    // 路径参数
+    @RequestMapping("/pathParams/{id}/{name}") // id 需要和下面的形参名一致
+    public String pathParams(@PathVariable String id, @PathVariable String name) {
+        System.out.println(id + name);
+        return "OK";
+    }
+}
+```

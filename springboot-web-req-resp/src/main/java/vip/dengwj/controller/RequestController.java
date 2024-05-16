@@ -1,10 +1,7 @@
 package vip.dengwj.controller;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vip.dengwj.pojo.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -79,6 +76,13 @@ public class RequestController {
     @RequestMapping("/jsonParams")
     public String jsonParams(@RequestBody User user) {
         System.out.println(user); // User{name='朴睦', age=24, address=Address{province = 上海, city = 上海}}
+        return "OK";
+    }
+
+    // 路径参数
+    @RequestMapping("/pathParams/{id}/{name}")
+    public String pathParams(@PathVariable String id, @PathVariable String name) {
+        System.out.println(id + name);
         return "OK";
     }
 }
