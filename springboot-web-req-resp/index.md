@@ -137,3 +137,10 @@ public class RequestController {
     }
 }
 ```
+
+## 响应数据
+* @ResponseBody
+* 类型：方法注解、类注解
+* 位置：Controller 方法上/类上
+* 作用：将方法返回值直接响应，如果返回值类型是实体对象/集合，将会转换成 json 格式响应
+* 说明：@RestController = @Controller + @ResponseBody
