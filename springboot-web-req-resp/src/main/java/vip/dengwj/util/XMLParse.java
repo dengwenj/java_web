@@ -5,6 +5,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,12 @@ public class XMLParse {
                 Class<?> type = parameter.getType();
                 list1.add(type);
             }
+        }
+        Field[] declaredFields = clazz.getDeclaredFields();
+        for (Field declaredField : declaredFields) {
+            declaredField.setAccessible(true);
+            Class<?> type = declaredField.getType();
+            String fieldName = declaredField.getName();
         }
 
         Constructor<T> con = clazz.getDeclaredConstructor(list1.toArray(new Class[0]));

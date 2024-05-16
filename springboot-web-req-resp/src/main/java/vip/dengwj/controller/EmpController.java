@@ -4,37 +4,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import vip.dengwj.pojo.Emp;
 import vip.dengwj.pojo.Result;
-import vip.dengwj.util.XMLParse;
+import vip.dengwj.service.EmpService;
+import vip.dengwj.service.impl.EmpServiceA;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 @RestController
 public class EmpController {
+    private final EmpService empService = new EmpServiceA();
+
     @RequestMapping("/getPerson")
     public Result getPerson() throws Exception {
-        String file = Objects.requireNonNull(this.getClass().getClassLoader().getResource("emp.xml")).getFile();
-        System.out.println(file); // /Users/dengwenjie/Java/java_web/springboot-web-req-resp/target/classes/emp.xml
-        // "springboot-web-req-resp/src/main/resources/emp.xml"
-        List<Emp> list = XMLParse.xmlParse(file, Emp.class);
-
-        Map<String, String> map = new HashMap<>();
-        map.put("1", "程序员");
-        map.put("2", "学生");
-        map.put("3", "老师");
-
-        Map<String, String> map1 = new HashMap<>();
-        map1.put("1", "男");
-        map1.put("0", "女");
-
-        for (Emp emp : list) {
-            emp.setGender(map1.get(emp.getGender()));
-            emp.setJob(map.get(emp.getJob()));
-        }
-        return Result.success(list);
+        List<Emp> empList = empService.getEmpList();
+        return Result.success(empList);
     }
+
+//    @RequestMapping("/getPerson")
+//    public Result getPerson() throws Exception {
+//        String file = Objects.requireNonNull(this.getClass().getClassLoader().getResource("emp.xml")).getFile();
+//        // System.out.println(file); // /Users/dengwenjie/Java/java_web/springboot-web-req-resp/target/classes/emp.xml
+//        // "springboot-web-req-resp/src/main/resources/emp.xml"
+//        List<Emp> list = XMLParse.xmlParse(file, Emp.class);
+//
+//        Map<String, String> map = new HashMap<>();
+//        map.put("1", "程序员");
+//        map.put("2", "学生");
+//        map.put("3", "老师");
+//
+//        Map<String, String> map1 = new HashMap<>();
+//        map1.put("1", "男");
+//        map1.put("0", "女");
+//
+//        for (Emp emp : list) {
+//            emp.setGender(map1.get(emp.getGender()));
+//            emp.setJob(map.get(emp.getJob()));
+//        }
+//        return Result.success(list);
+//    }
 }
 
 
