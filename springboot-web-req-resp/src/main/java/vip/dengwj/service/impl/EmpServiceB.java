@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//@Component // 将当前类交给 IOC 容器管理，成为 IOC 容器中的 bean
-public class EmpServiceA implements EmpService {
+@Component // 将当前类交给 IOC 容器管理，成为 IOC 容器中的 bean
+public class EmpServiceB implements EmpService {
     @Autowired // 运行时，IOC 容器会提供该类型的 bean 对象，并赋值给该变量 - 依赖注入
     private EmpDao empDao;
 
@@ -25,8 +25,8 @@ public class EmpServiceA implements EmpService {
         map.put("3", "老师");
 
         Map<String, String> map1 = new HashMap<>();
-        map1.put("1", "男");
-        map1.put("0", "女");
+        map1.put("1", "男生");
+        map1.put("0", "女生");
 
         for (Emp emp : empList) {
             emp.setGender(map1.get(emp.getGender()));

@@ -247,3 +247,9 @@ public class Result {
 * 控制反转：Inversion Of Control，简称 IOC。对象的创建控制权由程序自身转移到外部(容器)，这种思想称为控制反转
 * 依赖注入：Dependency Injection，简称 DI。容器为应用程序提供运行时，所依赖的资源，称为依赖注入
 * Bean 对象：IOC 容器中创建、管理的对象，称之为bean
+
+## IOC & DI 入门
+* 1、Service 层及 Dao 层的实现类，交给 IOC 容器管理。@Component
+* 2、为 Controller 及 Service 注入运行时，依赖的对象 @Autowired
+* @Component // 将当前类交给 IOC 容器管理，成为 IOC 容器中的 bean
+* @Autowired // 运行时，IOC 容器会提供该类型的 bean 对象，并赋值给该变量 - 依赖注入

@@ -1,5 +1,6 @@
 package vip.dengwj.dao.impl;
 
+import org.springframework.stereotype.Component;
 import vip.dengwj.dao.EmpDao;
 import vip.dengwj.pojo.Emp;
 import vip.dengwj.util.XMLParse;
@@ -7,6 +8,7 @@ import vip.dengwj.util.XMLParse;
 import java.util.List;
 import java.util.Objects;
 
+@Component // 将当前类交给 IOC 容器管理，成为 IOC 容器中的 bean
 public class EmpDaoA implements EmpDao {
     @Override
     public List<Emp> getEmpList() throws Exception {

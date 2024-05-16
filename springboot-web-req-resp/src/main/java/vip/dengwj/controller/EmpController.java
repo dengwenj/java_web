@@ -1,17 +1,18 @@
 package vip.dengwj.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import vip.dengwj.pojo.Emp;
 import vip.dengwj.pojo.Result;
 import vip.dengwj.service.EmpService;
-import vip.dengwj.service.impl.EmpServiceA;
 
 import java.util.List;
 
 @RestController
 public class EmpController {
-    private final EmpService empService = new EmpServiceA();
+    @Autowired // 运行时，IOC 容器会提供该类型的 bean 对象，并赋值给该变量 - 依赖注入
+    private EmpService empService;
 
     @RequestMapping("/getPerson")
     public Result getPerson() throws Exception {
