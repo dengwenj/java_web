@@ -1,11 +1,14 @@
 package vip.dengwj.controller;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import vip.dengwj.pojo.User;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -59,6 +62,14 @@ public class RequestController {
     @RequestMapping("/listParams")
     public String listParams(@RequestParam List<String> hobby) {
         System.out.println(hobby);
+        return "OK";
+    }
+
+    // 日期参数
+    @RequestMapping("/dateParams")
+    public String dateParams(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime updateTime) {
+        String format = updateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        System.out.println(format); // 2024-05-16 16:10:00
         return "OK";
     }
 }
