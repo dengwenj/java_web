@@ -2,6 +2,7 @@ package vip.dengwj.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import vip.dengwj.dao.EmpDao;
 import vip.dengwj.pojo.Emp;
 import vip.dengwj.service.EmpService;
@@ -10,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Service
 //@Component // 将当前类交给 IOC 容器管理，成为 IOC 容器中的 bean
 public class EmpServiceA implements EmpService {
     @Autowired // 运行时，IOC 容器会提供该类型的 bean 对象，并赋值给该变量 - 依赖注入

@@ -267,3 +267,14 @@ public class Result {
 ## Bean 组件扫描
 * 前面声明 bean 的四大注解，想要生效，还需要被组件扫描注解 @ComponentsScan 扫描
 * @ComponentScan 注解虽然没有显示配置，但是实际上已经包含在了启动类声明注解 @SpringBootApplication 中，默认扫描的范围是启动类所在包及其子包
+
+## Bean 注入
+* @Autowired 注解，默认是按照类型进行，如果存在多个相同类型的 bean，将会报错
+* 通过以下几种方案来解决：
+* 1、@Primary
+* 2、@Autowired + @Qualifier("bean 的名称")
+* 3、@Resource(name = "bean 的名称")
+
+## @Resource 和 @Autowired 区别
+* @Autowired 是 spring 框架提供的注解，而 @Resource 是 JDK 提供的注解
+* @Autowired 默认是按照类型注入，而 @Resource 默认是按照名称注入
