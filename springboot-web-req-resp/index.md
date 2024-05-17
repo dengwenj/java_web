@@ -263,3 +263,7 @@ public class Result {
 * 注意事项：
 * 1、声明 bean 的时候，可以通过 value 属性指定 bean 的名字，如果没有指定，默认为类名首字母小写
 * 2、使用以上四个注解都可以声明 bean，但是在 springboot 集成 web 开发中，声明控制器 bean 只能用 @Controller
+
+## Bean 组件扫描
+* 前面声明 bean 的四大注解，想要生效，还需要被组件扫描注解 @ComponentsScan 扫描
+* @ComponentScan 注解虽然没有显示配置，但是实际上已经包含在了启动类声明注解 @SpringBootApplication 中，默认扫描的范围是启动类所在包及其子包
