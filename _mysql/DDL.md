@@ -49,9 +49,10 @@ create table tb_user (
 * float        4               单精度浮点数值      float(5, 2): 5表示整个数字长度，2表示小数位个数
 * double       8               双精度浮点数值      double(5, 2):5表示整个数字长度，2表示小数位个数
 * decimal      小数值(精度更高)   decimal(5, 2): 5表示整个数字长度，2表示小数位个数
+* 无符号范围加上 unsigned
 
 ## 字符串类型
-* char： 0-225，定长字符串
+* char： 0-225，定长字符串 
 * varchar：0-65535，变长字符串
 * ...
 * char(10)：最多只能存 10 个字符，不足 10 个字符，占用10个字符空间，性能高，浪费空间
@@ -63,3 +64,17 @@ create table tb_user (
 * year：1，YYYY，年份值
 * datetime：8，YYYY-MM-DD HH:MM:SS，混合日期和时间值
 * timestamp：4，YYYY-MM-DD HH:MM:SS 混合日期和时间值，时间戳
+```mysql
+create table tb_emp (
+    id int primary key auto_increment comment 'id，唯一标识',
+    username varchar(20) not null unique comment '用户名',
+    name varchar(10) not null comment '员工姓名',
+    password varchar(30) default '123456' comment '密码',
+    gender tinyint unsigned not null comment '性别，1.男，2.女',
+    image varchar(300) comment '图像url',
+    job tinyint unsigned comment '职位，1.班主任，2.讲师，3.学工主管，4.教研主管',
+    entry_date date comment '入职日期',
+    create_date datetime comment '创建时间',
+    update_date datetime comment '更新时间'
+) comment '员工表'
+```
