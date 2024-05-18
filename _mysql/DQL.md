@@ -207,3 +207,26 @@ select * from tb_emp order by entry_date, update_time desc;
 
 ## 注意事项
 * 如果是多字段排序，当第一个字段值相同时，才会根据第二个字段进行排序
+
+## DQL-分页查询
+* 分页查询：select 字段列表 from 表名 limit 起始索引, 查询记录数;
+```mysql
+# 分页查询
+# 1、从起始索引 0 开始查询员工数据，每页展示 5 条记录
+select * from tb_emp limit 0, 5;
+
+# 2、查询第一页员工数据，每页展示5条记录
+select * from tb_emp limit 0, 5;
+select * from tb_emp limit 5;
+
+# 3、查询第二页员工数据，每页展示5条记录
+select * from tb_emp limit 5, 5;
+
+# 4、查询第三页员工数据，每页展示5条记录
+select * from tb_emp limit 10, 5;
+```
+
+## 注意事项
+* 1、起始索引从 0 开始，起始索引 = (查询页码 - 1) * 每页显示记录数
+* 2、分页查询是数据库的方案，不同的数据库有不同的实现，MySQL 中是 LIMIT
+* 3、如果查询的是第一页数据，起始索引可以省略，直接简写为 limit 10
