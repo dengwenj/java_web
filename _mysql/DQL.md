@@ -160,3 +160,28 @@ select sum(id) from tb_emp;
 ## 注意事项
 * null 值不参与所有聚合函数运算
 * 统计数量可以使用：count(*)、count(字段)、count(常量), 推荐使用 count(*)
+
+## DQL-分组查询
+* 分组查询：select 字段列表 from 表名 【where 条件】group by 分组字段名 【having 分组后过滤条件】;
+```mysql
+# 分组
+# 1、根据性别分组，统计男性和女性员工的数量
+select gender, count(*)
+from tb_emp
+group by gender;
+
+# 2、先查询入职时间在 '2010-01-01' 以后的员工，并对结果根据职位分组，获取员工数量大于等于 2 的职位
+select job, count(*)
+from tb_emp
+where entry_date >= '2010-01-01'
+group by job
+having count(*) >= 2;
+```
+
+## where 与 having 区别
+* 1、执行时机不同：where 是分组之前进行过滤，不满足 where 条件，不参与分组，而 having 是分组之后对结果进行过滤
+* 2、判断条件不同：where 不能对聚合函数进行判断，而 having 可以
+
+## 注意事项
+* 分组之后，查询的字段一般为聚合函数和分组字段，查询其他字段无任何意义
+* 执行顺序：where > 聚合函数 > having
