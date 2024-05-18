@@ -185,3 +185,25 @@ having count(*) >= 2;
 ## 注意事项
 * 分组之后，查询的字段一般为聚合函数和分组字段，查询其他字段无任何意义
 * 执行顺序：where > 聚合函数 > having
+
+## 排序查询
+* 条件查询：select 字段列表 from 表名【where 条件列表】【group by 分组字段】order by 字段1 排序方式1, 字段2 排序方式2...;
+```mysql
+# 排序查询
+# 1、根据入职日期，对员工进行升序排序
+select * from tb_emp order by entry_date asc;
+select * from tb_emp order by entry_date;
+
+# 2、根据入职时间，对员工进行降序排序
+select * from tb_emp order by entry_date desc;
+
+# 3、根据入职时间对公司的员工进行升序排序，入职时间相同，在按照更新时间进行降序排序
+select * from tb_emp order by entry_date, update_time desc;
+```
+
+## 排序方式
+* ASC: 升序(默认值)
+* DESC：降序
+
+## 注意事项
+* 如果是多字段排序，当第一个字段值相同时，才会根据第二个字段进行排序
