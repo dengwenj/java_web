@@ -78,3 +78,21 @@ create table tb_emp (
     update_date datetime comment '更新时间'
 ) comment '员工表'
 ```
+
+## DDL(操作表)
+* 1、查询：
+* 查询当前数据库所有表：show tables;
+* 查询表结构：desc 表名;
+* 查询建表语句：show create table 表名;
+* 2、修改：
+* 添加字段：alter table 表名 add 字段名 类型(长度) 【comment 注释】【约束】;
+* 修改字段类型：alter table 表名 modify 字段名 新数据类型(长度);
+* 修改字段名和字段类型：alter table 表名 change 旧字段名 新字段名 类型(长度) 【comment 注释】【约束】;
+* 删除字段：alter table 表名 drop column 字段名;
+* 修改表名：rename table 表名 to 新表名;
+* 3、删除：
+* 删除表：drop table 【if exists】表名;
+
+## 数据库设计-DDL
+* 数据库：创建、查询、使用、删除
+* 表结构：创建(语法、约束、数据类型、设计)、查询、修改、删除
