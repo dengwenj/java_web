@@ -122,3 +122,41 @@ select *
 from tb_emp
 where name like '苏%' -- %匹配任意个字符可以是0个字符
 ```
+
+## 聚合函数
+* 介绍：将一列数据作为一个整体，进行纵向计算
+* 语法：select 聚合函数(字段列表) from 表名;
+```mysql
+# 聚合函数
+# 1、统计该企业员工数量
+# 按字段
+select count(name) from tb_emp;
+select count(job) from tb_emp; -- 不对 null 值进行计算
+# 按常量
+select count(1) from tb_emp;
+# *
+select count(*) from tb_emp;
+
+# 2、统计该企业最早入职的员工
+select min(entry_date) from tb_emp;
+
+# 3、统计该企业最迟入职的员工
+select max(entry_date) from tb_emp;
+
+# 4、统计该企业员工 ID 的平均值
+select avg(id) from tb_emp;
+
+# 5、统计该企业员工的 ID 之和
+select sum(id) from tb_emp;
+```
+
+## 函数
+* count：统计数量
+* max：最大值
+* min：最小值
+* avg：平均值
+* sum：求和
+
+## 注意事项
+* null 值不参与所有聚合函数运算
+* 统计数量可以使用：count(*)、count(字段)、count(常量), 推荐使用 count(*)
