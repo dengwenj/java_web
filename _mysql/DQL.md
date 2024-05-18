@@ -230,3 +230,39 @@ select * from tb_emp limit 10, 5;
 * 1、起始索引从 0 开始，起始索引 = (查询页码 - 1) * 每页显示记录数
 * 2、分页查询是数据库的方案，不同的数据库有不同的实现，MySQL 中是 LIMIT
 * 3、如果查询的是第一页数据，起始索引可以省略，直接简写为 limit 10
+
+## 函数
+* 1、if(表达式, tvalue, fvalue)：当表达式为 true 时，取值 tvalue，当表达式为 false 时，取值fvalue
+* 2、case 表达式 when 值1 then 结果1 when 值2 then 结果2... else 结果 end
+```mysql
+# 案列2-1：完成员工性别信息的统计
+# 流程控制函数： if(条件表达式, true取值, false取值)
+select if(gender = 1, '男性员工', '女生员工') as 性别, count(*)
+from tb_emp
+group by gender;
+
+# 案例2-2：完成员工职位信息的统计
+# select if(
+#     job = 1, '班主任',
+#     if(job = 2, '讲师',
+#         if(job = 3, '学工主管',
+#             if(job = 4, '教研主任',
+#                 if(job is null, '未知', null)
+#             )
+#         )
+#     )
+# ) 职位, count(*)
+# from tb_emp
+# group by job
+# 流程控制函数 case 表达式 when 值1 then 结果1 when 值2 then 结果2... else ... end
+select (case job -- job 的值改变下
+            when 1 then '班主任'
+            when 2 then '讲师'
+            when 3 then '学工主管'
+            when 4 then '教研主任'
+            else '未知' end
+           ) 职位,
+       count(*)
+from tb_emp
+group by job;
+```
