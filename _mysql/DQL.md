@@ -37,3 +37,88 @@ select distinct job from tb_emp;
 
 ## 注意事项
 * *号代表查询所有字段，在实际开发中尽量少用（不直观，影响效率）
+
+## DQL 条件查询
+* 语法：
+* 条件查询：select 字段列表 from 表名 where 条件列表;
+
+## 比较运算符
+* 1、> 大于，>= 大于等于，< 小于，<= 小于等于，= 等于，<> 或 != 不等于
+* 2、between ... and ...： 在某个范围之内(含最小、最大值)
+* 3、in(...)： 在 in 之后的列表中的值，多选一
+* 4、like 占位符： 模糊匹配(_匹配单个字符，%匹配任意个字符可以是0个字符)
+* 5、is null： 是 null
+
+## 逻辑运算符
+* and 或 &&：并且(多个条件同时成立)
+* or 或 ||：或者(多个条件任意一个成立)
+* not 或 !：非，不是
+```mysql
+# 条件查询
+# 1、查询姓名为 朴睦 的员工
+select *
+from tb_emp
+where name = '朴睦';
+
+# 2、查询 id 小于等于 5 的员工信息
+select *
+from tb_emp
+where id <= 5;
+
+# 3、查询没有分配职位的员工信息
+select id,
+       username,
+       name,
+       password,
+       gender,
+       image,
+       job,
+       entry_date,
+       create_time,
+       update_time
+from tb_emp
+where job is null;
+
+# 4、查询有职位的员工信息
+select *
+from tb_emp
+where job is not null;
+
+# 5、查询入职日期在 '2000-01-01' 到 '2008-12-31' 之间的员工信息
+select *
+from tb_emp
+where entry_date >= '2000-01-01'
+  and entry_date <= '2008-12-31';
+
+select *
+from tb_emp
+where entry_date between '2000-01-01' and '2008-12-31';
+
+# 6、查询密码不等于 '123456' 的员工信息
+select *
+from tb_emp
+where password != '123456';
+
+# 7、查询入职日期在 2000-01-01 到 2008-12-31 之间 且 性别为 女 的员工信息
+select *
+from tb_emp
+where (entry_date between '2000-01-01' and '2008-12-31')
+  and gender = 2;
+
+# 8、查询职位是 2，3，4的员工信息
+select * from tb_emp where job = 2 or job = 3 or job = 4;
+
+select *
+from tb_emp
+where job in(2, 3, 4); -- 多选一 符合2或3或4的
+
+# 9、查询姓名为两个字的员工信息
+select *
+from tb_emp
+where name like '__'; -- _匹配单个字符
+
+# 10、查询姓 苏 的员工信息
+select *
+from tb_emp
+where name like '苏%' -- %匹配任意个字符可以是0个字符
+```
