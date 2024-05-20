@@ -30,3 +30,14 @@
 
 ## 常见产品
 * C3P0、DBCP、Druid(阿里巴巴)、Hikari(springboot 默认)
+
+## lombok
+* lombok 是一个实用的 java 类库，能通过注解的形式自动生成构造器、getter/setter、equals、hashcode、toString等方法，并可以自动化生成日志变量，简化java开发，提高效率
+* 注解：
+* @Getter/@Setter：为所有的属性提供 get/set 方法
+* @ToString：会给类自动生成易阅读的 toString 方法
+* @EqualsAndHashCode：根据类所拥有的非静态字段自动重写 equals 方法和 hashCode 方法
+* @Data：提供了更综合的生成代码功能（@Getter + @Setter + @ToString + @EqualsAndHashCode）
+* @NoArgsConstructor：为实体类生成无参的构造器方法
+* @AllArgsConstructor：为实体类生成除了 static 修饰的字段之外带有各参数的构造器方法
+* Lombok 会在编译时，自动生成对应的 java 代码，我们使用 lombok 时，还需要安装一个 lombok 的插件(idea 自带)
