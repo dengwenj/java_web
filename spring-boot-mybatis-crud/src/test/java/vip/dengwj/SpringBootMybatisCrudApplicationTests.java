@@ -23,7 +23,7 @@ class SpringBootMybatisCrudApplicationTests {
     @Test
     public void testInsertEmp() {
         Emp emp = new Emp();
-        emp.setUsername("zhanghua");
+        emp.setUsername("zhanghua1");
         emp.setName("张华");
         emp.setGender((short) 1);
         emp.setImage("z.jpg");
@@ -33,5 +33,7 @@ class SpringBootMybatisCrudApplicationTests {
         emp.setCreateTime(LocalDateTime.now());
         emp.setUpdateTime(LocalDateTime.now());
         empMapper.insertEmp(emp);
+
+        System.out.println(emp.getId());
     }
 }

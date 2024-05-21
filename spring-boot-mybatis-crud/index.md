@@ -26,3 +26,8 @@
 * ${...}
 * 拼接 SQL，直接将参数拼接在 SQL 语句中，存在 SQL 注入问题
 * 使用时机：如果对表名、列表进行动态设置时使用
+
+## 新增
+* @Insert("...")
+* 返回主键：
+* @Options(useGeneratedKeys = true, keyProperty = "id")，会自动将生成的主键值，赋值给 emp 对象的 id 属性
