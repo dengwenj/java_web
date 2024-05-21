@@ -55,4 +55,7 @@ public interface EmpMapper {
 
     // 动态 SQL 更新
     void update2(Emp emp);
+
+    // 批量删除
+    void deleteIds(List<Integer> ids);
 }

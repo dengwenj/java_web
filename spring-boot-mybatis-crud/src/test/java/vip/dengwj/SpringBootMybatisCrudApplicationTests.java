@@ -8,6 +8,7 @@ import vip.dengwj.pojo.Emp;
 import javax.annotation.Resource;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest
@@ -83,5 +84,11 @@ class SpringBootMybatisCrudApplicationTests {
         emp.setId(29);
         emp.setName("张华29");
         empMapper.update2(emp);
+    }
+
+    @Test
+    public void testDeleteIds() {
+        List<Integer> integers = Arrays.asList(23, 24, 25);
+        empMapper.deleteIds(integers);
     }
 }

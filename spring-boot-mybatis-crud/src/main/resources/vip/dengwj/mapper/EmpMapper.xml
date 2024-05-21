@@ -53,8 +53,7 @@
                 )
             </if>
             <if test="gender != null">
-                and gender =
-                #{gender}
+                and gender = #{gender}
             </if>
             <if test="start != null and end != null">
                 and entry_date between
@@ -65,4 +64,12 @@
         </where>
         order by update_time desc
     </select>
+
+<!--    批量删除-->
+    <delete id="deleteIds">
+        delete from mybatis.tb_emp where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
 </mapper>
