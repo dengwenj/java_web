@@ -36,4 +36,20 @@ class SpringBootMybatisCrudApplicationTests {
 
         System.out.println(emp.getId());
     }
+
+    @Test
+    public void testUpdateEmp() {
+        Emp emp = new Emp();
+        emp.setId(29);
+        emp.setUsername("zhanghua1");
+        emp.setName("张华1");
+        emp.setGender((short) 1);
+        emp.setImage("zh.jpg");
+        emp.setJob((short) 1);
+        emp.setEntryDate(LocalDate.now());
+        emp.setDeptId(2);
+        emp.setUpdateTime(LocalDateTime.now());
+
+        empMapper.updateEmp(emp);
+    }
 }

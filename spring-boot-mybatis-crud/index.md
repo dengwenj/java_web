@@ -31,3 +31,6 @@
 * @Insert("...")
 * 返回主键：
 * @Options(useGeneratedKeys = true, keyProperty = "id")，会自动将生成的主键值，赋值给 emp 对象的 id 属性
+
+## 更新
+* @Update("...")
