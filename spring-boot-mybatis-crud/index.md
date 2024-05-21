@@ -50,3 +50,26 @@
 * })
 * 3、开启驼峰命名：如果字段名与属性名符合驼峰命名规则，mybatis 会自动通过驼峰命名规则映射
 * mybatis.configuration.map-underscore-to-camel-case=true
+
+## 多条件查询
+* MySQL的 concat 函数，字符串拼接函数
+* select concat('hello', ' mysql')
+* 1、#{name} 的 name 就是 @Param("name") 中的 name
+* 反射时获取的参数名要实际的，而非 args0，可以在 pom 里配置，这样就可以不用加  @Param("name") 注解了
+```java
+//@Select("select * from mybatis.tb_emp where name like concat('%', #{name}, '%') and " +
+//        "gender = #{gender} and entry_date between #{start} and #{end} order by update_time desc")
+//    List<Emp> getList(
+//        String name,
+//        Short gender,
+//        LocalDate start,
+//        LocalDate end
+//    );
+
+////    List<Emp> getList(
+////        @Param("name") String name,
+////        @Param("gender") Short gender,
+////        @Param("start") LocalDate start,
+////        @Param("end") LocalDate end
+////    );
+```

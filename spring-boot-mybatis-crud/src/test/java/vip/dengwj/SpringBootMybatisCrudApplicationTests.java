@@ -8,6 +8,7 @@ import vip.dengwj.pojo.Emp;
 import javax.annotation.Resource;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @SpringBootTest
 class SpringBootMybatisCrudApplicationTests {
@@ -57,5 +58,16 @@ class SpringBootMybatisCrudApplicationTests {
     public void testGetById() {
         Emp emp = empMapper.getById(29);
         System.out.println(emp);
+    }
+
+    @Test
+    public void testGetList() {
+        List<Emp> list = empMapper.getList(
+            "苏",
+            (short) 1,
+            LocalDate.of(2024, 1, 1),
+            LocalDate.of(2024, 5, 21)
+        );
+        System.out.println(list);
     }
 }
