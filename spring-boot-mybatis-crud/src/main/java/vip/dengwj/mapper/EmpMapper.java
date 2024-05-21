@@ -23,4 +23,8 @@ public interface EmpMapper {
     @Update("update tb_emp set username = #{username}, name = #{name}, gender = #{gender}, image = #{image}, job = #{job}, " +
         "entry_date = #{entryDate}, dept_id = #{deptId}, update_time = #{updateTime} where id = #{id};")
     void updateEmp(Emp emp);
+
+    // 查询
+    @Select("select * from mybatis.tb_emp where id = #{id}")
+    Emp getById(Integer id);
 }

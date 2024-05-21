@@ -34,3 +34,19 @@
 
 ## 更新
 * @Update("...")
+
+## 查询
+* @Select("...")
+
+## 数据封装
+* 实体类属性名和数据库表查询返回的字段名一致，mybatis 会自动封装
+* 如果实体类属性名和数据库表查询返回的字段名不一致，不能自动封装
+* 1、起别名：在 SQL 语句中，对不一样的列名起别名，别名和实体类属性名一致
+* @Select("select entry_date entryDate from tb_emp where id = 1")
+* 2、手动结果映射：通过 @Results 及 @Result 进行手动结果映射
+* @Results({
+* @Result(column="entry_date", property="entryDate"),
+* ...
+* })
+* 3、开启驼峰命名：如果字段名与属性名符合驼峰命名规则，mybatis 会自动通过驼峰命名规则映射
+* mybatis.configuration.map-underscore-to-camel-case=true

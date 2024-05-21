@@ -52,4 +52,10 @@ class SpringBootMybatisCrudApplicationTests {
 
         empMapper.updateEmp(emp);
     }
+
+    @Test
+    public void testGetById() {
+        Emp emp = empMapper.getById(29);
+        System.out.println(emp);
+    }
 }
