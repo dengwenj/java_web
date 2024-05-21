@@ -42,9 +42,13 @@
         </set>
         where id = #{id}
     </update>
-    <select id="getList" resultType="vip.dengwj.pojo.Emp">
-        select *
+
+    <sql id="commonSelect">
+        select id, username, name, password, gender, image, job, entry_date, dept_id, create_time, update_time
         from mybatis.tb_emp
+    </sql>
+    <select id="getList" resultType="vip.dengwj.pojo.Emp">
+        <include refid="commonSelect" />
         <where>
             <if test="name != null">
                 name like concat('%',
@@ -53,7 +57,8 @@
                 )
             </if>
             <if test="gender != null">
-                and gender = #{gender}
+                and gender =
+                #{gender}
             </if>
             <if test="start != null and end != null">
                 and entry_date between
@@ -65,7 +70,7 @@
         order by update_time desc
     </select>
 
-<!--    批量删除-->
+    <!--    批量删除-->
     <delete id="deleteIds">
         delete from mybatis.tb_emp where id in
         <foreach collection="ids" item="id" separator="," open="(" close=")">
