@@ -32,18 +32,24 @@ public interface EmpMapper {
     Emp getById(Integer id);
 
     // 多条件查询
-    @Select("select * from mybatis.tb_emp where name like concat('%', #{name}, '%') and " +
-        "gender = #{gender} and entry_date between #{start} and #{end} order by update_time desc")
-    List<Emp> getList(
-        String name,
-        Short gender,
-        LocalDate start,
-        LocalDate end
-    );
+//    @Select("select * from mybatis.tb_emp where name like concat('%', #{name}, '%') and " +
+//        "gender = #{gender} and entry_date between #{start} and #{end} order by update_time desc")
+//    List<Emp> getList(
+//        String name,
+//        Short gender,
+//        LocalDate start,
+//        LocalDate end
+//    );
 //    List<Emp> getList(
 //        @Param("name") String name,
 //        @Param("gender") Short gender,
 //        @Param("start") LocalDate start,
 //        @Param("end") LocalDate end
 //    );
+    List<Emp> getList(
+        String name,
+        Short gender,
+        LocalDate start,
+        LocalDate end
+    );
 }

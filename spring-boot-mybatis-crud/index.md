@@ -72,4 +72,10 @@
 ////        @Param("start") LocalDate start,
 ////        @Param("end") LocalDate end
 ////    );
-```
+``` 
+
+## XML 映射文件
+* XML 映射文件的名称与 Mapper 接口名称一致，并且将 XML 映射文件和 Mapper 接口放置在相同包下（同包同名）
+* XML 映射文件的 namespace 属性为 Mapper 接口全限定名一致
+* XML 映射文件中 sql 语句的 id 和 Mapper 接口中的方法名一致，并保持返回类型一致
+* resultType：单条记录所封装的类型

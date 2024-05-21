@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="vip.dengwj.mapper.EmpMapper">
+    <select id="getList" resultType="vip.dengwj.pojo.Emp">
+        select *
+        from mybatis.tb_emp
+        where name like concat('%', #{name}, '%')
+          and gender = #{gender}
+          and entry_date between #{start} and #{end}
+        order by update_time desc
+    </select>
+</mapper>
