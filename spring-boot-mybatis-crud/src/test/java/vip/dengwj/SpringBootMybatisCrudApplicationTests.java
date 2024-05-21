@@ -62,11 +62,17 @@ class SpringBootMybatisCrudApplicationTests {
 
     @Test
     public void testGetList() {
+//        List<Emp> list = empMapper.getList(
+//            "苏",
+//            (short) 1,
+//            LocalDate.of(2024, 1, 1),
+//            LocalDate.of(2024, 5, 21)
+//        );
         List<Emp> list = empMapper.getList(
             "苏",
-            (short) 1,
-            LocalDate.of(2024, 1, 1),
-            LocalDate.of(2024, 5, 21)
+            null,
+            null,
+            null
         );
         System.out.println(list);
     }

@@ -7,9 +7,17 @@
     <select id="getList" resultType="vip.dengwj.pojo.Emp">
         select *
         from mybatis.tb_emp
-        where name like concat('%', #{name}, '%')
-          and gender = #{gender}
-          and entry_date between #{start} and #{end}
+        <where>
+            <if test="name != null">
+                name like concat('%', #{name}, '%')
+            </if>
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+            <if test="start != null and end != null">
+                and entry_date between #{start} and #{end}
+            </if>
+        </where>
         order by update_time desc
     </select>
 </mapper>

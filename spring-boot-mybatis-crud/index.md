@@ -79,3 +79,7 @@
 * XML 映射文件的 namespace 属性为 Mapper 接口全限定名一致
 * XML 映射文件中 sql 语句的 id 和 Mapper 接口中的方法名一致，并保持返回类型一致
 * resultType：单条记录所封装的类型
+
+## 动态 SQL
+* <if>：用于判断条件是否成立，使用 test 属性进行条件判断，如果条件为 true，则拼接 SQL
+* <where>：where 元素只会在子元素有内容的情况下才插入 where 子句，而且会自动去除子句的开头的 AND 或 OR
