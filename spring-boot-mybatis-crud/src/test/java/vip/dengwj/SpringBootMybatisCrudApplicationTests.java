@@ -76,4 +76,12 @@ class SpringBootMybatisCrudApplicationTests {
         );
         System.out.println(list);
     }
+
+    @Test
+    public void testUpdate2() {
+        Emp emp = new Emp();
+        emp.setId(29);
+        emp.setName("张华29");
+        empMapper.update2(emp);
+    }
 }
