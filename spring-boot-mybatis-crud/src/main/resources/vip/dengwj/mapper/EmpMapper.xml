@@ -44,11 +44,21 @@
     </update>
 
     <sql id="commonSelect">
-        select id, username, name, password, gender, image, job, entry_date, dept_id, create_time, update_time
+        select id,
+               username,
+               name,
+               password,
+               gender,
+               image,
+               job,
+               entry_date,
+               dept_id,
+               create_time,
+               update_time
         from mybatis.tb_emp
     </sql>
     <select id="getList" resultType="vip.dengwj.pojo.Emp">
-        <include refid="commonSelect" />
+        <include refid="commonSelect"/>
         <where>
             <if test="name != null">
                 name like concat('%',
