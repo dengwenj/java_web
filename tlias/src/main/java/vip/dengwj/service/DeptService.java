@@ -10,4 +10,10 @@ public interface DeptService {
 
     // 删除部门
     void deleteDept(String id);
+
+    // 新增部门
+    void addDept(Dept dept);
+
+    // 编辑部门
+    void updateDept(Dept dept);
 }

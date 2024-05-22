@@ -27,4 +27,16 @@ public class DeptServiceImpl implements DeptService {
     public void deleteDept(String id) {
         deptMapper.deleteDept(id);
     }
+
+    // 新增部门
+    @Override
+    public void addDept(Dept dept) {
+        deptMapper.addDept(dept);
+    }
+
+    // 编辑部门
+    @Override
+    public void updateDept(Dept dept) {
+        deptMapper.updateDept(dept);
+    }
 }
