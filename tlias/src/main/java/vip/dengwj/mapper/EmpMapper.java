@@ -33,4 +33,7 @@ public interface EmpMapper {
         LocalDate start,
         LocalDate end
     );
+
+    // 删除员工
+    void deleteByIds(List<String> ids);
 }

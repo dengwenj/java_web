@@ -49,4 +49,9 @@ public class EmpServiceImpl implements EmpService {
         com.github.pagehelper.Page<Emp> page1 = (com.github.pagehelper.Page<Emp>) list;
         return new Page<>(page1.getTotal(), page1.getResult());
     }
+
+    @Override
+    public void deleteByIds(List<String> ids) {
+        empMapper.deleteByIds(ids);
+    }
 }

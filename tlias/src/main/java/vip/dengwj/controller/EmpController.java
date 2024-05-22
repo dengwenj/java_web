@@ -3,9 +3,7 @@ package vip.dengwj.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vip.dengwj.pojo.Emp;
 import vip.dengwj.pojo.Page;
 import vip.dengwj.pojo.Result;
@@ -41,5 +39,14 @@ public class EmpController {
             end
         );
         return Result.success(empPage);
+    }
+
+    // 删除员工
+    @PostMapping("/emp/delete")
+    public Result deleteByIds(@RequestBody List<String> ids) {
+        log.info("删除员工: {}", ids);
+
+        empService.deleteByIds(ids);
+        return Result.success();
     }
 }
