@@ -1,7 +1,33 @@
 package vip.dengwj.controller;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import vip.dengwj.pojo.Emp;
+import vip.dengwj.pojo.Page;
+import vip.dengwj.pojo.Result;
+import vip.dengwj.service.EmpService;
 
+import java.util.List;
+
+@Slf4j
 @RestController
 public class EmpController {
+    @Autowired
+    EmpService empService;
+
+    // 获取员工列表
+    @GetMapping("/emp")
+    public Result getEmpList(
+        // 默认值
+        @RequestParam(defaultValue = "1") Integer page,
+        @RequestParam(defaultValue = "10") Integer pageSize,
+        Emp emp
+    ) {
+        log.info("获取员工列表：{}, {}, {}", page, pageSize, emp);
+        Page<Emp> empPage = empService.getEmpList(page, pageSize, emp);
+        return Result.success(empPage);
+    }
 }
