@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import vip.dengwj.pojo.Emp;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
@@ -25,6 +26,11 @@ public interface EmpMapper {
 //    );
 
     // 使用 pagehelper 分页插件获取列表
-    @Select("select * from talias.emp")
-    List<Emp> list();
+//    @Select("select * from talias.emp ")
+    List<Emp> list(
+        String name,
+        Short gender,
+        LocalDate start,
+        LocalDate end
+    );
 }

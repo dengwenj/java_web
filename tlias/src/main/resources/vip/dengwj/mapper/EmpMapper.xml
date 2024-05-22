@@ -12,6 +12,24 @@
     </select>
 
     <select id="getEmpCount" resultType="java.lang.Long">
-        select count(*) from talias.emp
+        select count(*)
+        from talias.emp
+    </select>
+
+    <select id="list" resultType="vip.dengwj.pojo.Emp">
+        select *
+        from talias.emp
+        <where>
+            <if test="name != null and name != ''">
+                name like concat('%', #{name}, '%')
+            </if>
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+            <if test="start != null and end != null">
+                and entry_date between #{start} and #{end}
+            </if>
+        </where>
+        order by update_time desc
     </select>
 </mapper>
