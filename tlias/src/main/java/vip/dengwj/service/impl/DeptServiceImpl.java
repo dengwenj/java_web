@@ -39,4 +39,10 @@ public class DeptServiceImpl implements DeptService {
     public void updateDept(Dept dept) {
         deptMapper.updateDept(dept);
     }
+
+    // 根据 id 获取部门
+    @Override
+    public Dept getDeptById(String id) {
+        return deptMapper.getDeptById(id);
+    }
 }

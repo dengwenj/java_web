@@ -20,4 +20,7 @@ public interface DeptMapper {
 
     // 编辑部门
     void updateDept(Dept dept);
+
+    // 根据 id 获取部门
+    Dept getDeptById(String id);
 }

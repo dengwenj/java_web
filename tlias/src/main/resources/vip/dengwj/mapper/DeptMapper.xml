@@ -11,7 +11,7 @@
 
     <update id="updateDept">
         update talias.dept
-        set name = #{name},
+        set name        = #{name},
             update_time = now()
         where id = #{id}
     </update>
@@ -21,4 +21,10 @@
         from talias.dept
         where id = #{id}
     </delete>
+
+    <select id="getDeptById" resultType="vip.dengwj.pojo.Dept">
+        select id, name, create_time, update_time
+        from talias.dept
+        where id = #{id}
+    </select>
 </mapper>

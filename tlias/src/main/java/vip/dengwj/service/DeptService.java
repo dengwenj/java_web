@@ -16,4 +16,7 @@ public interface DeptService {
 
     // 编辑部门
     void updateDept(Dept dept);
+
+    // 根据 id 查询
+    Dept getDeptById(String id);
 }

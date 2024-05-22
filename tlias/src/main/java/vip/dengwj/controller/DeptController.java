@@ -53,4 +53,12 @@ public class DeptController {
         deptService.updateDept(dept);
         return Result.success();
     }
+
+    // 根据 id 查询数据
+    @GetMapping("/{id}")
+    public Result getDeptById(@PathVariable String id) {
+        log.info("根据 id 查询数据: {}", id);
+        Dept dept = deptService.getDeptById(id);
+        return Result.success(dept);
+    }
 }
