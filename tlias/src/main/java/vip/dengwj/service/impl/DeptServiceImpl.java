@@ -21,4 +21,10 @@ public class DeptServiceImpl implements DeptService {
         List<Dept> list = deptMapper.getList();
         return list;
     }
+
+    // 删除部门
+    @Override
+    public void deleteDept(String id) {
+        deptMapper.deleteDept(id);
+    }
 }

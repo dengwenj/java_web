@@ -11,4 +11,7 @@ public interface DeptMapper {
     // 返回全部部门
     @Select("select * from talias.dept")
     List<Dept> getList();
+
+    // 删除部门
+    void deleteDept(String id);
 }
