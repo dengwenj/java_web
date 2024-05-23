@@ -1,6 +1,5 @@
 package vip.dengwj.service;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import vip.dengwj.pojo.Emp;
 import vip.dengwj.pojo.Page;
 
@@ -19,4 +18,7 @@ public interface EmpService {
 
     // 删除员工
     void deleteByIds(List<String> ids);
+
+    // 新增
+    void addEmp();
 }
