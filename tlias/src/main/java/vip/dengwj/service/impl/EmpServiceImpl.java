@@ -2,7 +2,6 @@ package vip.dengwj.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 import vip.dengwj.mapper.EmpMapper;
 import vip.dengwj.pojo.Emp;
@@ -17,16 +16,16 @@ public class EmpServiceImpl implements EmpService {
     @Autowired
     EmpMapper empMapper;
 
-//    @Override
-//    public Page<Emp> getEmpList(Integer page, Integer pageSize, Emp emp) {
-//        Integer formatPage = (page - 1) * pageSize;
-//        // 获取员工列表
-//        List<Emp> list = empMapper.getEmpList(formatPage, pageSize, emp);
-//        // 获取员工数量
-//        long total = empMapper.getEmpCount();
-//
-//        return new Page<>(total, list);
-//    }
+    //@Override
+    //public Page<Emp> getEmpList(Integer page, Integer pageSize, Emp emp) {
+    //    Integer formatPage = (page - 1) * pageSize;
+    //    // 获取员工列表
+    //    List<Emp> list = empMapper.getEmpList(formatPage, pageSize, emp);
+    //    // 获取员工数量
+    //    long total = empMapper.getEmpCount();
+    //
+    //    return new Page<>(total, list);
+    //}
 
     // 使用 pagehelper 分页插件获取列表
     @Override
