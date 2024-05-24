@@ -2,6 +2,7 @@ package vip.dengwj.utils;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,10 +12,15 @@ import java.util.UUID;
 // 控制反转
 @Component
 public class AliOSSUtils {
-    private String endpoint = "https://oss-cn-shanghai.aliyuncs.com";
-    private static String accessKeyId = "你的accessKeyId";
-    private static String accessKeySecret = "你的accessKeySecret";
-    private static String bucketName = "pumu-upload";
+    // @Value 注解通常用于外部配置的属性注入
+    @Value("${aliyun.oss.endpoint}")
+    private String endpoint;
+    @Value("${aliyun.oss.accessKeyId}")
+    private String accessKeyId;
+    @Value("${aliyun.oss.accessKeySecret}")
+    private String accessKeySecret;
+    @Value("${aliyun.oss.bucketName}")
+    private String bucketName;
 
     public String upload(MultipartFile file) throws IOException {
         String originalFilename = file.getOriginalFilename();
