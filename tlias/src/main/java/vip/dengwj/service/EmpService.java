@@ -21,4 +21,7 @@ public interface EmpService {
 
     // 新增员工
     void addEmp(Emp emp);
+
+    // 根据 id 查询员工
+    Emp getEmpById(Long id);
 }

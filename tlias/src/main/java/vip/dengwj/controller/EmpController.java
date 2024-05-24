@@ -57,4 +57,12 @@ public class EmpController {
         empService.addEmp(emp);
         return Result.success();
     }
+
+    // 根据 id 查询数据
+    @GetMapping("/emp/{id}")
+    public Result getEmpById(@PathVariable Long id) {
+        log.info("根据 id 查询数据, {}", id);
+        Emp emp = empService.getEmpById(id);
+        return Result.success(emp);
+    }
 }
