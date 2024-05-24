@@ -55,3 +55,9 @@ public class UploadController {
 * hobby:
 *  -空格java
 *  -空格c
+
+## @ConfigurationProperties 与 @Value
+* 相同点：都是用来注入外部配置的属性的
+* 不同点：
+* 1、@Value 注解只能一个一个的进行外部属性的注入
+* 2、@ConfigurationProperties 可以批量的将外部的属性配置注入到 bean 对象的属性中
