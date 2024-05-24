@@ -49,4 +49,12 @@ public class EmpController {
         empService.deleteByIds(ids);
         return Result.success();
     }
+
+    // 新增员工
+    @PostMapping("/emp/add")
+    public Result addEmp(@RequestBody Emp emp) {
+        log.info("新增员工：{}", emp.toString());
+        empService.addEmp(emp);
+        return Result.success();
+    }
 }

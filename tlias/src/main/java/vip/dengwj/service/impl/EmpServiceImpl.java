@@ -53,4 +53,10 @@ public class EmpServiceImpl implements EmpService {
     public void deleteByIds(List<String> ids) {
         empMapper.deleteByIds(ids);
     }
+
+    // 新增员工
+    @Override
+    public void addEmp(Emp emp) {
+        empMapper.addEmp(emp);
+    }
 }

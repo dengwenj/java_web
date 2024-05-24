@@ -18,4 +18,7 @@ public interface EmpService {
 
     // 删除员工
     void deleteByIds(List<String> ids);
+
+    // 新增员工
+    void addEmp(Emp emp);
 }

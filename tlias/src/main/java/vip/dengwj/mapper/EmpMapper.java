@@ -1,8 +1,6 @@
 package vip.dengwj.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 import vip.dengwj.pojo.Emp;
 
 import java.time.LocalDate;
@@ -36,4 +34,7 @@ public interface EmpMapper {
 
     // 删除员工
     void deleteByIds(List<String> ids);
+
+    // 新增员工
+    void addEmp(Emp emp);
 }
