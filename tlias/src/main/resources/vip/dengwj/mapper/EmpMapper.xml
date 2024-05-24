@@ -8,6 +8,37 @@
         values (#{username}, #{name}, #{gender}, #{image}, #{job}, #{entryDate}, #{deptId})
     </insert>
 
+    <update id="updateEmp">
+        update talias.emp
+        <set>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="gender != null and gender != 0">
+                gender = #{gender},
+            </if>
+            <if test="image != null and image != ''">
+                image = #{image},
+            </if>
+            <if test="job != null and job != 0">
+                job = #{job},
+            </if>
+            <if test="entryDate != null and entryDate != ''">
+                entry_date = #{entryDate},
+            </if>
+            <if test="deptId != null and deptId != 0">
+                dept_id = #{deptId},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
     <delete id="deleteByIds">
         delete from talias.emp where id in
         <foreach collection="ids" item="id" separator="," open="(" close=")">

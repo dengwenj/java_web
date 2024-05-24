@@ -24,4 +24,7 @@ public interface EmpService {
 
     // 根据 id 查询员工
     Emp getEmpById(Long id);
+
+    // 修改员工
+    void updateEmp(Emp emp);
 }

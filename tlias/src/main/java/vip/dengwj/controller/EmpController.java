@@ -65,4 +65,12 @@ public class EmpController {
         Emp emp = empService.getEmpById(id);
         return Result.success(emp);
     }
+
+    // 修改员工
+    @PostMapping("/emp/update")
+    public Result updateEmp(@RequestBody Emp emp) {
+        log.info("修改员工：{}", emp.toString());
+        empService.updateEmp(emp);
+        return Result.success();
+    }
 }

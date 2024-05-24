@@ -9,6 +9,7 @@ import vip.dengwj.pojo.Page;
 import vip.dengwj.service.EmpService;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -64,5 +65,14 @@ public class EmpServiceImpl implements EmpService {
     public Emp getEmpById(Long id) {
         Emp emp = empMapper.getEmpById(id);
         return emp;
+    }
+
+    @Override
+    public void updateEmp(Emp emp) {
+        LocalDateTime now = LocalDateTime.now();
+        emp.setUpdateTime(now);
+        System.out.println(emp.getUpdateTime());
+        System.out.println(emp);
+        empMapper.updateEmp(emp);
     }
 }
