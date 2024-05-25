@@ -125,3 +125,10 @@ public void gJWT() {
 ## 注意事项
 * JWT 校验时使用的签名秘钥，必须和生成 JWT 令牌时使用的秘钥是配套的
 * 如果 JWT 令牌解析校验时报错，则说明 JWT 令牌被篡改或失效了，令牌非法
+
+## 过滤器（Filter）
+* 概念：Filter 过滤器，是 javaweb 三大组件(Servlet、Filter、Listener)之一
+* 过滤器可以把对资源的请求拦截下来，从而实现一些特殊的功能
+* 过滤器一般完成一些通用的操作，比如：登录验证、统一编码处理、敏感字符处理
+* 定义 Filter：定义一个类，实现 Filter 接口，并重写其所有方法
+* 配置 Filter：Filter 类上加 @WebFilter 注解，配置拦截资源的路径。引导类上加 @ServletComponentScan 开启 Servlet 组件支持
