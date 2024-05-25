@@ -69,3 +69,21 @@ public class UploadController {
 * 1、客户端会话跟踪技术：Cookie
 * 2、服务端会话跟踪技术：Session
 * 3、令牌技术
+
+## Cookie
+* 优点：HTTP 协议中支持的技术
+* 缺点：
+* 1、移动端 APP 无法使用 Cookie
+* 2、不安全、用户可以自己禁用 Cookie
+* 3、Cookie 不能跨域
+
+## Session
+* 优点：存储在服务端，安全
+* 缺点：服务器集群环境下无法直接使用 Session，Cookie 的缺点
+
+## 令牌技术
+* 优点：
+* 1、支持 PC 端，移动端
+* 2、解决集群环境下的认证问题
+* 3、减轻服务器端存储压力
+* 缺点：需要自己实现
