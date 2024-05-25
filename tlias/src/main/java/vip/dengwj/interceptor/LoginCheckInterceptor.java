@@ -48,6 +48,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         } catch (Exception e) {
             log.error("令牌失效：{}", e.getMessage());
             LoginCheckInterceptor.ResErr(resp);
+            return false;
         }
 
         //令牌是有效放行

@@ -167,3 +167,29 @@ public void gJWT() {
 * Filter 和 Interceptor：
 * 接口规范不同：过滤器需要实现 Filter 接口，而拦截器需要实现 HandlerInterceptor 接口
 * 拦截范围不同：过滤器 Filter 会拦截所有的资源，而 Interceptor 只会拦截 Spring 环境中的资源
+
+## 异常处理
+* 方案1：在 Controller 的方法中进行 try...catch 处理，不推荐
+* 方案2：全局异常处理器, 推荐
+```java
+package vip.dengwj.exception;
+
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import vip.dengwj.pojo.Result;
+
+/**
+ * 全局异常处理器
+ * Spring 里面的，没捕获的所有错误都会到这里来
+ */
+@RestControllerAdvice
+// @RestControllerAdvice = @ControllerAdvice + @ResponseBody
+public class GlobalExceptionHandler {
+    // Exception.class 捕获所有异常
+    @ExceptionHandler(Exception.class)
+    public Result handleException(Exception e) {
+        e.printStackTrace();
+        return Result.error("操作失败，请联系管理员");
+    }
+}
+```
