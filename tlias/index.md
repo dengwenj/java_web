@@ -132,3 +132,13 @@ public void gJWT() {
 * 过滤器一般完成一些通用的操作，比如：登录验证、统一编码处理、敏感字符处理
 * 定义 Filter：定义一个类，实现 Filter 接口，并重写其所有方法
 * 配置 Filter：Filter 类上加 @WebFilter 注解，配置拦截资源的路径。引导类上加 @ServletComponentScan 开启 Servlet 组件支持
+
+## Filter 执行流程
+* 放行后访问对应资源，资源访问完成后，还会回到 Filter 中吗？ 会
+* 如果回到 Filter 中，是重新执行还是执行放行后的逻辑呢？ 执行放行后的逻辑
+
+## Filter 拦截路径
+* Filter 可以根据需求，配置不同的拦截资源路径：
+* /login：只访问 /login 路径时，才会被拦截
+* /emps/*：访问 /emps 下的所有资源，都会被拦截
+* /*：访问所有资源，都会被拦截
