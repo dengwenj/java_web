@@ -153,3 +153,17 @@ public void gJWT() {
 * 作用：拦截请求，在指定的方法调用前后，根据业务需要执行预先设定的代码
 * 定义拦截器，实现 HandlerInterceptor 接口，并重写其所有方法
 * 注册配置拦截器
+
+## 拦截器 Interceptor 拦截路径
+* 拦截器可以根据需求，配置不同的拦截路径：
+* addPathPatterns 需要拦截那些 excludePathPatterns 不需要拦截那些
+* /*：一级路径，能匹配 /depts，/emps，/login，不能匹配 /depts/1
+* /**：任意级路径，都能匹配
+* /depts/*：/depts 下的一级路径，能匹配 /depts/1，不能匹配 /depts/1/2，/depts
+* /depts/**：/depts 下的任意级路径，能匹配 /depts，/depts/1，/depts/1/2，不能匹配 /emps/1
+
+## 拦截器-执行流程
+* Filter 在 Interceptor 的前面执行
+* Filter 和 Interceptor：
+* 接口规范不同：过滤器需要实现 Filter 接口，而拦截器需要实现 HandlerInterceptor 接口
+* 拦截范围不同：过滤器 Filter 会拦截所有的资源，而 Interceptor 只会拦截 Spring 环境中的资源
