@@ -1,10 +1,9 @@
 package vip.dengwj.filter;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = "/*")
+//@WebFilter(urlPatterns = "/*")
 public class DemoFilter implements Filter {
     // 初始化方法，web 服务器启动，创建 Filter 时调用，只调用一次
     @Override
