@@ -9,7 +9,6 @@ import vip.dengwj.pojo.Result;
 import vip.dengwj.utils.JWTUtils;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -17,7 +16,7 @@ import java.util.Map;
 
 @Slf4j
 @Component
-@WebFilter(urlPatterns = "/*")
+//@WebFilter(urlPatterns = "/*")
 public class LoginCheckFilter implements Filter {
     @Autowired
     private JWTUtils jwtUtils;
