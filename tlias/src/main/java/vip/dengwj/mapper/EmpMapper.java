@@ -43,4 +43,7 @@ public interface EmpMapper {
 
     // 修改员工
     void updateEmp(Emp emp);
+
+    // 根据用户名和密码查询
+    Emp getEmpByUsernameAndPassword(Emp emp);
 }
