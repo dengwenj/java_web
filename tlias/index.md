@@ -96,3 +96,32 @@ public class UploadController {
 * 2、Payload(有效载荷)，携带一些自定义信息、默认信息等。例如：{"id": "1", "username": "Tom"}
 * 3、Signature(签名)，防止 Token 被篡改、确保安全性。将 header、payload，并加入指定秘钥，通过指定签名算法计算而来
 * Base64：是一种基于 64 个可打印字符(A-Z a-z 0-9 + /) 来表示二进制数据的编码方式
+```java
+public void gJWT() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", 1);
+        map.put("name", "朴睦");
+
+        String jwt = Jwts.builder()
+            .signWith(SignatureAlgorithm.HS256, "pumuww") // 签名算法，pumuww(秘钥)
+            .setClaims(map) // 自定义载荷
+            .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) // 一小时
+            .compact();
+        parseJWT(jwt);// eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoi5py0552mIiwiaWQiOjEsImV4cCI6MTcxNjYzNDc4Nn0.5cFjPofoPDMozk2mppFS9JaypPMJi3Zenrc4d4ePytU
+    }
+
+    /**
+     * 解析 JWT 令牌
+     */
+    public void parseJWT(String jwt) {
+        Claims data = Jwts.parser()
+            .setSigningKey("pumuww") // 秘钥
+            .parseClaimsJws(jwt)
+            .getBody();
+        System.out.println(data + "ww");
+    }
+```
+
+## 注意事项
+* JWT 校验时使用的签名秘钥，必须和生成 JWT 令牌时使用的秘钥是配套的
+* 如果 JWT 令牌解析校验时报错，则说明 JWT 令牌被篡改或失效了，令牌非法
