@@ -55,6 +55,11 @@
     </delete>
 
 
+    <delete id="deleteEmpByDeptId">
+        delete from talias.emp where dept_id = #{deptId}
+    </delete>
+
+
     <select id="getEmpList" resultType="vip.dengwj.pojo.Emp">
         select *
         from talias.emp

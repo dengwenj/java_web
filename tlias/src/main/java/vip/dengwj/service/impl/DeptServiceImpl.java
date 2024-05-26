@@ -1,7 +1,9 @@
 package vip.dengwj.service.impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vip.dengwj.mapper.DeptMapper;
+import vip.dengwj.mapper.EmpMapper;
 import vip.dengwj.pojo.Dept;
 import vip.dengwj.service.DeptService;
 
@@ -12,6 +14,8 @@ import java.util.List;
 public class DeptServiceImpl implements DeptService {
     @Resource
     private DeptMapper deptMapper;
+    @Resource
+    private EmpMapper empMapper;
 
     /**
      * 返回全部部门
@@ -23,9 +27,15 @@ public class DeptServiceImpl implements DeptService {
     }
 
     // 删除部门
+    // spring 开启事务
+    @Transactional
     @Override
     public void deleteDept(String id) {
+        // 根据 id 删除部门
         deptMapper.deleteDept(id);
+
+        // 根据部门 id 删除该部门下的员工
+        empMapper.deleteEmpByDeptId(id);
     }
 
     // 新增部门

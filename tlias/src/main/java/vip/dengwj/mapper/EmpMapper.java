@@ -46,4 +46,7 @@ public interface EmpMapper {
 
     // 根据用户名和密码查询
     Emp getEmpByUsernameAndPassword(Emp emp);
+
+    // 根据部门 id 删除员工
+    void deleteEmpByDeptId(String deptId);
 }

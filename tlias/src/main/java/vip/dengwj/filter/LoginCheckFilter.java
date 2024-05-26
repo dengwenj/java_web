@@ -2,8 +2,6 @@ package vip.dengwj.filter;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import vip.dengwj.global.ConstantGlobal;
 import vip.dengwj.pojo.Result;
 import vip.dengwj.utils.JWTUtils;
@@ -15,14 +13,15 @@ import java.io.IOException;
 import java.util.Map;
 
 @Slf4j
-@Component
+//@Component
 //@WebFilter(urlPatterns = "/*")
 public class LoginCheckFilter implements Filter {
-    @Autowired
+    //@Autowired
     private JWTUtils jwtUtils;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
+        System.out.println("看见我可可进去就看见可靠几块钱金额");
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
 
