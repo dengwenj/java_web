@@ -6,3 +6,31 @@
 ## AOP
 * 场景：记录操作日志、权限控制、事务管理...
 * 优势：代码无侵入、减少重复代码、提交开发效率、维护方便
+
+## AOP 核心概念
+* 连接点：JoinPoint，可以被 AOP 控制的方法（暗含方法执行时相关信息）
+* 通知：Advice，指哪些重复的逻辑，也就是共性功能（最终体现为一个方法）
+* 切入点：PointCut，匹配连接点的条件，通知仅会在切入点方法执行时被应用，（切入点表达式）
+* 切面：Aspect，描述通知与切入点的对应关系（通知 + 切入点）
+* 目标对象：Target，通知所应用的对象
+* 一旦进行了 aop 的开发，运行的就不再是原始的目标对象，而是基于目标对象生成的代理对象
+```java
+@Slf4j
+// 控制反转，保存到 bean 容器对象中
+@Component
+// aop
+@Aspect
+public class TimeAspect {
+    @Around("execution(* vip.dengwj.service.*.*(..))")
+    public Object recordTime(ProceedingJoinPoint joinPoint) throws Throwable {
+        long start = System.currentTimeMillis();
+        Object result = joinPoint.proceed();
+        long end = System.currentTimeMillis();
+
+        log.info("耗时时间: {} ms", end - start);
+
+        return result;
+    }
+}
+
+```
