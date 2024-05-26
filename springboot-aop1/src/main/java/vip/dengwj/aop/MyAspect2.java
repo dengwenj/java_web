@@ -2,13 +2,11 @@ package vip.dengwj.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-@Aspect
-@Order(1)
+//@Aspect
+//@Order(1)
 public class MyAspect2 {
     // 这样的执行顺序：
     // 我是2前面
