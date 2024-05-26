@@ -182,3 +182,8 @@ public class MyAspect5 {
     }
 }
 ```
+
+## 连接点
+* 在 Spring 中用 JoinPoint 抽象了连接点，用它可以获得方法执行时的相关信息，如目标类名、方法名、方法参数等
+* 对于 @Around 通知，获取连接点信息只能使用 ProceedingJoinPoint
+* 对于其他四种通知，获取连接点信息只能使用 JoinPoint，它是 ProceedingJoinPoint 的父类型

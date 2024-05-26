@@ -2,12 +2,11 @@ package vip.dengwj.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Component
-@Aspect
+//@Aspect
 public class MyAspect5 {
     // 匹配返回全部部门
     //@Pointcut("execution(public * vip.dengwj.service.DeptService.getList()))")
