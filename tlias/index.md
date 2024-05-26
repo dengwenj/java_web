@@ -204,3 +204,33 @@ public class GlobalExceptionHandler {
 * 注解：@Transactional
 * 位置：业务（service）层的方法上、类上、接口上
 * 作用：将当前方法交给 spring 进行事务管理，方法执行前，开启事务；成功执行完毕，提交事务；出现异常，回滚事务
+```java
+// 删除部门
+    // spring 事务管理
+    @Transactional
+    @Override
+    public void deleteDept(String id) {
+        // 根据 id 删除部门
+        deptMapper.deleteDept(id);
+
+        // 根据部门 id 删除该部门下的员工
+        empMapper.deleteEmpByDeptId(id);
+    }
+```
+
+## 事务属性-回滚
+* rollbackFor：默认情况下，只有出现 RuntimeException 才回滚异常。rollbackFor 属性用于控制出现何种异常类型，回滚事务
+```java
+ // spring 开启事务
+    @Transactional(rollbackFor = Exception.class) // 任何异常都要回滚
+    @Override
+    public void deleteDept(String id) {
+        // 根据 id 删除部门
+        deptMapper.deleteDept(id);
+        
+        throw new Exception("出错啦");
+        
+        // 根据部门 id 删除该部门下的员工
+        empMapper.deleteEmpByDeptId(id);
+    }
+```

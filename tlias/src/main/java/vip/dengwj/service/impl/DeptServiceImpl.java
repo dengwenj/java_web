@@ -28,7 +28,7 @@ public class DeptServiceImpl implements DeptService {
 
     // 删除部门
     // spring 开启事务
-    @Transactional
+    @Transactional(rollbackFor = Exception.class) // 任何异常都要回滚
     @Override
     public void deleteDept(String id) {
         // 根据 id 删除部门
