@@ -34,3 +34,59 @@ public class TimeAspect {
 }
 
 ```
+
+## 通知类型
+* 1、@Around：环绕通知，此注解标注的通知方法在目标方法前、后都被执行
+* 2、@Before：前置通知，此注解标注的通知方法在目标方法前被执行
+* 3、@After：后置通知，此注解标注的通知方法在目标方法后被执行，无论是否有异常都会执行
+* 4、@AfterReturning：返回后通知，此注解标注的通知方法在目标方法后被执行，有异常不会执行
+* 5、@AfterThrowing：异常后通知，此注解标注的通知方法发生异常后执行
+
+## 注意事项
+* @Around 环绕通知需要自己调用 ProceedingJoinPoint.proceed() 来让原始方法执行，其他通知不需要考虑目标方法执行
+* @Around 环绕通知方法的返回值，必须指定为 Object，来接收原始方法的返回值
+* @Before(前置通知)、@After(后置通知)、@Around(环绕通知)、@AfterReturning(返回后通知)、@AfterThrowing(异常后通知)
+
+## PointCut
+* 该注解的作用是将公共的切点表达式抽取出来，需要用到时引用该切点表达式
+
+```java
+@Component
+@Aspect
+public class MyAspect1 {
+    @Pointcut("execution(* vip.dengwj.service.impl.DeptServiceImpl.*(..))")
+    public void pj() {}
+
+    @Before("pj()")
+    public void before(JoinPoint joinPoint) {
+        System.out.println("joinPoint.getArgs() = " + Arrays.toString(joinPoint.getArgs()));
+        System.out.println("before...");
+    }
+
+    @Around("pj()")
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+        System.out.println("around after...");
+
+        Object proceed = joinPoint.proceed();
+
+        System.out.println("around after...");
+
+        return proceed;
+    }
+
+    @After("pj()")
+    public void after(JoinPoint joinPoint) {
+        System.out.println("after...");
+    }
+
+    @AfterReturning("pj()")
+    public void afterReturning() {
+        System.out.println("afterReturning...");
+    }
+
+    @AfterThrowing("pj()")
+    public void afterThrowing() {
+        System.out.println("afterThrowing...");
+    }
+}
+```
