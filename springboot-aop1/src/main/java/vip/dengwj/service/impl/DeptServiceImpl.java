@@ -1,6 +1,7 @@
 package vip.dengwj.service.impl;
 
 import org.springframework.stereotype.Service;
+import vip.dengwj.aop.MyLog;
 import vip.dengwj.mapper.DeptMapper;
 import vip.dengwj.pojo.Dept;
 import vip.dengwj.service.DeptService;
@@ -17,6 +18,7 @@ public class DeptServiceImpl implements DeptService {
      * 返回全部部门
      */
     @Override
+    @MyLog
     public List<Dept> getList() {
         System.out.println("金额几节课进去阿胶蒋佳坤看见开启可洁可净");
         List<Dept> list = deptMapper.getList();
@@ -25,6 +27,7 @@ public class DeptServiceImpl implements DeptService {
 
     // 删除部门
     @Override
+    @MyLog
     public void deleteDept(String id) {
         deptMapper.deleteDept(id);
     }

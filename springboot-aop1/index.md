@@ -159,3 +159,26 @@ public class MyAspect5 {
 * 所有业务方法名在命名时尽量规范，方便切入点表达式快速匹配。如：查询类方法都是 find 开头，更新类方法都是 update 开头
 * 描述切入点方法通常基于接口描述，而不是直接描述实现类，增强拓展性
 * 在满足业务需要的前提下，尽量缩小切入点的匹配范围。如：包名匹配尽量不使用..，使用 * 匹配单个包
+
+## 切入点表达式-@annotation
+* @annotation 切入点表达式，用于匹配标识有特定注解的方法
+* @annotation(vip.dengwj.aop.MyLog)
+```java
+public class MyAspect5 {
+    // 匹配返回全部部门
+    //@Pointcut("execution(public * vip.dengwj.service.DeptService.getList()))")
+    // 匹配 vip.dengwj.service 包下的 DeptService 这个接口中所有的方法
+    // @Pointcut("execution(* vip.dengwj.service.DeptService.*(..))")
+    // 匹配查询全部和删除的 这种可以用 @annotation 方法
+    //@Pointcut("execution(* vip.dengwj.service.DeptService.getList()) || " +
+    //    "execution(* vip.dengwj.service.DeptService.deleteDept(java.lang.String))")
+    @Pointcut("@annotation(vip.dengwj.aop.MyLog)")
+    public void pc() {}
+
+    @Around("pc()")
+    public Object record(ProceedingJoinPoint joinPoint) throws Throwable {
+        System.out.println("来了吗");
+        return joinPoint.proceed();
+    }
+}
+```

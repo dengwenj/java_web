@@ -13,9 +13,10 @@ public class MyAspect5 {
     //@Pointcut("execution(public * vip.dengwj.service.DeptService.getList()))")
     // 匹配 vip.dengwj.service 包下的 DeptService 这个接口中所有的方法
     // @Pointcut("execution(* vip.dengwj.service.DeptService.*(..))")
-    // 匹配查询全部和删除的
-    @Pointcut("execution(* vip.dengwj.service.DeptService.getList()) || " +
-        "execution(* vip.dengwj.service.DeptService.deleteDept(java.lang.String))")
+    // 匹配查询全部和删除的 这种可以用 @annotation 方法
+    //@Pointcut("execution(* vip.dengwj.service.DeptService.getList()) || " +
+    //    "execution(* vip.dengwj.service.DeptService.deleteDept(java.lang.String))")
+    @Pointcut("@annotation(vip.dengwj.aop.MyLog)")
     public void pc() {}
 
     @Around("pc()")
