@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 @Component
-@Aspect
+//@Aspect
 public class MyAspect1 {
     @Pointcut("execution(* vip.dengwj.service.impl.DeptServiceImpl.*(..))")
     public void pj() {}

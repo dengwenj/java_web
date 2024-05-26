@@ -3,14 +3,13 @@ package vip.dengwj.aop;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 // 控制反转，保存到 bean 容器对象中
 @Component
 // aop
-@Aspect
+//@Aspect
 public class TimeAspect {
     @Around("execution(* vip.dengwj.service.*.*(..))")
     public Object recordTime(ProceedingJoinPoint joinPoint) throws Throwable {

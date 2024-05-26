@@ -64,6 +64,7 @@ public class MyAspect1 {
     }
 
     @Around("pj()")
+    // 这个是通知方法
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("around after...");
 
@@ -89,4 +90,24 @@ public class MyAspect1 {
         System.out.println("afterThrowing...");
     }
 }
+```
+
+## 通知顺序
+* 当有多个切面的切入点都匹配到了目标方法，目标方法运行时，多个通知方法都会被执行
+* 执行顺序：
+* 1、不同切面类中，默认按照切面类的类名字母排序：
+* 目标方法前的通知方法：字母排名靠前的先执行
+* 目标方法后的通知方法：字母排名靠前的后执行
+* 2、用 @Order(数字) 加在切面类上来控制顺序
+* 目标方法前的通知方法：数字小的先执行
+* 目标方法后的通知方法：数字小的后执行
+```java
+// 这样的执行顺序：
+// 我是2前面
+// 我是3前面
+// 我是4前面
+// 目标方法
+// 我是4后面 
+// 我是3后面
+// 我是2后面
 ```

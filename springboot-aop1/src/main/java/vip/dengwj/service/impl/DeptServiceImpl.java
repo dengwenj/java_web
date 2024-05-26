@@ -18,6 +18,7 @@ public class DeptServiceImpl implements DeptService {
      */
     @Override
     public List<Dept> getList() {
+        System.out.println("金额几节课进去阿胶蒋佳坤看见开启可洁可净");
         List<Dept> list = deptMapper.getList();
         return list;
     }
