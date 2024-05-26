@@ -5,9 +5,12 @@ import org.springframework.transaction.annotation.Transactional;
 import vip.dengwj.mapper.DeptMapper;
 import vip.dengwj.mapper.EmpMapper;
 import vip.dengwj.pojo.Dept;
+import vip.dengwj.pojo.DeptLog;
+import vip.dengwj.service.DeptLogService;
 import vip.dengwj.service.DeptService;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -16,6 +19,8 @@ public class DeptServiceImpl implements DeptService {
     private DeptMapper deptMapper;
     @Resource
     private EmpMapper empMapper;
+    @Resource
+    private DeptLogService deptLogService;
 
     /**
      * 返回全部部门
@@ -31,11 +36,20 @@ public class DeptServiceImpl implements DeptService {
     @Transactional(rollbackFor = Exception.class) // 任何异常都要回滚
     @Override
     public void deleteDept(String id) {
-        // 根据 id 删除部门
-        deptMapper.deleteDept(id);
+        try {
+            // 根据 id 删除部门
+            deptMapper.deleteDept(id);
 
-        // 根据部门 id 删除该部门下的员工
-        empMapper.deleteEmpByDeptId(id);
+            int i = 1 / 0;
+
+            // 根据部门 id 删除该部门下的员工
+            empMapper.deleteEmpByDeptId(id);
+        } finally {
+            DeptLog deptLog = new DeptLog();
+            deptLog.setLog("删除部门数据成功了吗");
+            deptLog.setCreateTime(LocalDateTime.now());
+            deptLogService.addDeptLog(deptLog);
+        }
     }
 
     // 新增部门
