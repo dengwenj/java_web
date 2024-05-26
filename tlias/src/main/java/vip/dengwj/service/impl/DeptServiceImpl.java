@@ -2,6 +2,7 @@ package vip.dengwj.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import vip.dengwj.anno.Log;
 import vip.dengwj.mapper.DeptMapper;
 import vip.dengwj.mapper.EmpMapper;
 import vip.dengwj.pojo.Dept;
@@ -26,6 +27,7 @@ public class DeptServiceImpl implements DeptService {
      * 返回全部部门
      */
     @Override
+    @Log
     public List<Dept> getList() {
         List<Dept> list = deptMapper.getList();
         return list;
@@ -60,6 +62,7 @@ public class DeptServiceImpl implements DeptService {
 
     // 编辑部门
     @Override
+    @Log
     public void updateDept(Dept dept) {
         deptMapper.updateDept(dept);
     }
