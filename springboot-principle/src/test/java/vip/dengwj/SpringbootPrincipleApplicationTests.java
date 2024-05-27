@@ -1,11 +1,13 @@
 package vip.dengwj;
 
+import com.google.gson.Gson;
 import org.dom4j.io.SAXReader;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import vip.dengwj.controller.DeptController;
+import vip.dengwj.pojo.Result;
 
 @SpringBootTest
 class SpringbootPrincipleApplicationTests {
@@ -14,7 +16,7 @@ class SpringbootPrincipleApplicationTests {
     @Autowired
     private SAXReader saxReader;
     @Autowired
-    private
+    private Gson gson;
 
     @Test
     void contextLoads() {
@@ -50,6 +52,21 @@ class SpringbootPrincipleApplicationTests {
 
     @Test
     void test4() {
+        System.out.println("gson.toJson(Result.success()) = " + gson.toJson(Result.success()));
+    }
 
+    @Test
+    public void testTokenParser() {
+        System.out.println(applicationContext.getBean("tokenParser"));
+    }
+
+    @Test
+    public void testHeaderParser() {
+        System.out.println(applicationContext.getBean("headerParser"));
+    }
+
+    @Test
+    public void testConfig() {
+        System.out.println(applicationContext.getBean("headerParser"));
     }
 }

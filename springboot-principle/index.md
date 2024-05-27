@@ -47,7 +47,7 @@ public class CommonConfig {
         return new SAXReader();
     }
 }
-```
+``` 
 
 ## 注意事项
 * 通过 @Bean 注解的 name或value 属性可以声明 bean 的名称，如果不指定，默认 bean 的名称就是方法名
@@ -58,3 +58,30 @@ public class CommonConfig {
 
 ## springboot 自动配置
 * springboot 的自动配置就是当 spring 容器启动后，一些配置类、bean 对象就自动存入到了 IOC 容器中，不需要我们手动去声明，从而简化了开发，省去了繁琐的配置操作
+
+## 自动配置原理
+* 方案一：@ComponentScan 组件扫描
+* @ComponentScan({"com.example", "vip.dengwj"})
+* 方案二：@Import 导入。使用 @Import 导入的类会被 spring 加载到 IOC 容器中，导入形式主要有以下几种：
+* 导入普通类
+* 导入配置类
+* 导入 ImportSelector 接口实现类
+* @EnableXxxx注解，封装 @Import 注解
+* 在项目当中引入第三方依赖之后，如何加载第三方依赖当中定义好的 bean 以及配置类，从而完成自动配置操作
+
+## @Configuration
+* 配置类：可以用来声明第三方bean，把第三方的类交给 ioc 容器管理
+
+## @SpringBootApplication
+* 该注解标识在 SpringBoot 工程引导类上，是 SpringBoot 中最重要的注解，该注解由三个部分组成：
+* 1、@SpringBootConfiguration：该注解与 @Configuration 注解作用相同，用来声明当前也是一个配置类
+* 2、@ComponentScan：组件扫描，默认扫描当前引导类所在包及其子包
+* 3、@EnableAutoConfiguration：SpringBoot 实现自动化配置的核心注解
+
+## @Conditional
+* 作用：按照一定的条件进行判断，在满足给定条件后才会注册对应的 bean 对象到 spring ioc 容器中
+* 位置：方法、类
+* @Conditional 本身是一个父注解，派生出大量的子注解：
+* @ConditionalOnClass：判断环境中是否有对应字节码文件，才注册 bean 到 ioc 容器
+* @ConditionalOnMissingBean：判断环境中有没有对应的 bean（类型或名称），没有才注册 bean 到 ioc 容器
+* @ConditionalOnProperty：判断配置文件中有对应属性和值，才注册 bean 到 ioc 容器
