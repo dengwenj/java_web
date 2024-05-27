@@ -32,3 +32,23 @@
 * 默认 singleton 的 bean，在容器启动时被创建，可以使用 @Lazy 注解来延迟初始化（延迟到第一次使用时）
 * prototype 的 bean，每一次使用该 bean 的时候都会创建一个新的实例
 * 实际开发中，绝大部分的 Bean 是单例的，也就是说绝大部分 Bean 不需要配置 scope 属性
+
+## 第三方 bean
+* @Bean：
+* 1、如果要管理的 bean 对象来自于第三方（不是自定义的），是无法用 @Component 及衍生注解声明 bean 的，就需要用到 @Bean 注解
+* 2、若要管理的第三方 bean 对象，建议对这些 bean 进行集中分类配置，可以通过 @Configuration 注解声明一个配置类
+```java
+@Configuration
+public class CommonConfig {
+    // 将当前方法的返回值对象交给 IOC 容器管理，成为 IOC 容器 bean
+    // 通过 @Bean 注解的 name/value 属性指定 bean 名称，如果未指定，默认是方法名
+    @Bean
+    public SAXReader saxReader() {
+        return new SAXReader();
+    }
+}
+```
+
+## 注意事项
+* 通过 @Bean 注解的 name或value 属性可以声明 bean 的名称，如果不指定，默认 bean 的名称就是方法名
+* 如果第三方 bean 需要依赖其它 bean 对象，直接在 bean 定义方法中设置形参即可，容器会根据类型自动装配

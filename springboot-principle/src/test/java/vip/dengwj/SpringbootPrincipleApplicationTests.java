@@ -1,5 +1,6 @@
 package vip.dengwj;
 
+import org.dom4j.io.SAXReader;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +11,8 @@ import vip.dengwj.controller.DeptController;
 class SpringbootPrincipleApplicationTests {
     @Autowired
     private ApplicationContext applicationContext;
+    @Autowired
+    private SAXReader saxReader;
 
     @Test
     void contextLoads() {
@@ -36,6 +39,11 @@ class SpringbootPrincipleApplicationTests {
             Object bean = applicationContext.getBean("deptController");
             System.out.println(bean);
         }
+    }
+
+    @Test
+    void test3() {
+        System.out.println(saxReader);
     }
 
 }
