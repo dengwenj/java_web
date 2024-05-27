@@ -52,3 +52,9 @@ public class CommonConfig {
 ## 注意事项
 * 通过 @Bean 注解的 name或value 属性可以声明 bean 的名称，如果不指定，默认 bean 的名称就是方法名
 * 如果第三方 bean 需要依赖其它 bean 对象，直接在 bean 定义方法中设置形参即可，容器会根据类型自动装配
+
+## springboot 起步依赖原理
+* 就是 maven 的依赖传递
+
+## springboot 自动配置
+* springboot 的自动配置就是当 spring 容器启动后，一些配置类、bean 对象就自动存入到了 IOC 容器中，不需要我们手动去声明，从而简化了开发，省去了繁琐的配置操作
