@@ -1,8 +1,7 @@
-package vip.dengwj.dao.impl;
+package vip.dengwj.mapper.impl;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
-import vip.dengwj.dao.EmpDao;
+import vip.dengwj.mapper.EmpDao;
 import vip.dengwj.pojo.Emp;
 import vip.dengwj.util.XMLParse;
 

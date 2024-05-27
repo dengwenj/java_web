@@ -1,4 +1,4 @@
-package vip.dengwj.dao;
+package vip.dengwj.mapper;
 
 import vip.dengwj.pojo.Emp;
 

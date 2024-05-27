@@ -1,10 +1,8 @@
 package vip.dengwj.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import vip.dengwj.dao.EmpDao;
+import vip.dengwj.mapper.EmpDao;
 import vip.dengwj.pojo.Emp;
 import vip.dengwj.service.EmpService;
 
