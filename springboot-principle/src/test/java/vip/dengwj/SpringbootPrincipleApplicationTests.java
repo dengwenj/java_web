@@ -30,4 +30,12 @@ class SpringbootPrincipleApplicationTests {
         System.out.println(bean3);
     }
 
+    @Test
+    void test2() {
+        for (int i = 0; i < 10; i++) {
+            Object bean = applicationContext.getBean("deptController");
+            System.out.println(bean);
+        }
+    }
+
 }

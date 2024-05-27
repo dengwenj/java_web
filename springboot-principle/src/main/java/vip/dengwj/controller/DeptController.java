@@ -9,6 +9,8 @@ import vip.dengwj.service.DeptService;
 import javax.annotation.Resource;
 import java.util.List;
 
+//@Scope("prototype")
+//@Lazy
 @Slf4j
 @RestController
 // 一个完整的请求路径，应该是类上的 @RequestMapping 的 value 属性 + 方法上的 @RequestMapping 的 value 属性
@@ -16,6 +18,11 @@ import java.util.List;
 public class DeptController {
     @Resource
     private DeptService deptService;
+
+    public DeptController() {
+        System.out.println("DeptController...");
+    }
+
     /**
      * 获取全部部门
      */
