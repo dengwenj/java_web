@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vip.dengwj.mapper.EmpMapper">
+    <insert id="addEmp">
+        insert into talias.emp (username, name, gender, image, job, entry_date, dept_id)
+        values (#{username}, #{name}, #{gender}, #{image}, #{job}, #{entryDate}, #{deptId})
+    </insert>
+
+    <update id="updateEmp">
+        update talias.emp
+        <set>
+            <if test="username != null and username != ''">
+                username =
+                #{username},
+            </if>
+            <if test="name != null and name != ''">
+                name =
+                #{name},
+            </if>
+            <if test="gender != null and gender != 0">
+                gender =
+                #{gender},
+            </if>
+            <if test="image != null and image != ''">
+                image =
+                #{image},
+            </if>
+            <if test="job != null and job != 0">
+                job =
+                #{job},
+            </if>
+            <if test="entryDate != null and entryDate != ''">
+                entry_date =
+                #{entryDate},
+            </if>
+            <if test="deptId != null and deptId != 0">
+                dept_id =
+                #{deptId},
+            </if>
+            <if test="updateTime != null">
+                update_time =
+                #{updateTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteByIds">
+        delete from talias.emp where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <delete id="deleteEmpByDeptId">
+        delete from talias.emp where dept_id = #{deptId}
+    </delete>
+
+
+    <select id="getEmpList" resultType="vip.dengwj.pojo.Emp">
+        select *
+        from talias.emp
+        limit #{page}, #{pageSize}
+    </select>
+
+    <select id="getEmpCount" resultType="java.lang.Long">
+        select count(*)
+        from talias.emp
+    </select>
+
+    <select id="list" resultType="vip.dengwj.pojo.Emp">
+        select *
+        from talias.emp
+        <where>
+            <if test="name != null and name != ''">
+                name like concat('%',
+                #{name},
+                '%'
+                )
+            </if>
+            <if test="gender != null">
+                and gender =
+                #{gender}
+            </if>
+            <if test="start != null and end != null">
+                and entry_date between
+                #{start}
+                and
+                #{end}
+            </if>
+        </where>
+        order by update_time desc
+    </select>
+
+    <!--    根据id查询员工-->
+    <select id="getEmpById" resultType="vip.dengwj.pojo.Emp">
+        select *
+        from talias.emp
+        where id = #{id}
+    </select>
+    <select id="getEmpByUsernameAndPassword" resultType="vip.dengwj.pojo.Emp">
+        select *
+        from talias.emp
+        where username = #{username}
+          and password = #{password}
+    </select>
+</mapper>
