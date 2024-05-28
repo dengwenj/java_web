@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 // 默认组件扫描器是在本包下扫描
 //@ComponentScan({"com.example", "vip.dengwj"})
-//@Import({HeaderConfig.class})
-//@Import({MyImportSelector.class})
+//@Import({HeaderConfig.class}) // 导入配置类
+//@Import({MyImportSelector.class}) // 导入 ImportSelector 接口实现类
 // 会自动的导入到 ioc 容器
 @EnableHeaderConfig
 @SpringBootApplication
