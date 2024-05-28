@@ -124,7 +124,7 @@ public class CommonConfig {
 ## 继承关系实现
 * 1、创建 maven 模块 tlias-parent，该工程为父工程，设置打包方式 pom，<packaging>pom</packaging>
 * 2、在子工程的 pom.xml 文件中，配置继承关系
-* 3、在父工程中配置各个工程共有的依赖（子工程会自动继承父工程的依赖）
+* 3、 （子工程会自动继承父工程的依赖）
 * jar: 普通模块打包，springboot 项目基本都是 jar 包(内嵌 tomcat 运行)
 * war: 普通 web 程序打包，需要部署在外部的 tomcat 服务器中运行
 * pom: 父工程或聚合工程，该模块不写代码，仅进行依赖管理
@@ -133,3 +133,15 @@ public class CommonConfig {
 * 在子工程中，配置了继承关系之后，坐标中的 groupId 是可以省略的，因为会自动继承父工程的
 * relativePath 指定父工程的 pom 文件的相对位置（如果不指定，将从本地仓库/远程仓库查找该工程）
 * 若父子工程都配置了同一个依赖的不同版本，以子工程的为准
+
+## 锁定版本
+* 在 maven 中，可以在父工程的 pom 文件中通过 <dependencyManagement> 来统一管理依赖版本
+* 子工程引入依赖时，无需指定 <version> 版本号，父工程统一管理。变更依赖版本，只需在父工程中统一变更
+
+## 自定义属性/引用属性
+* <properties><lombok.version>1.18.24</lombok.version></properties>
+* 然后用 ${lombok.version} 引用
+
+## <dependencyManagement> 和 <dependencies> 的区别是什么？
+* <dependencies>是直接依赖，在父工程配置了依赖子工程会直接继承下来
+* <dependencyManagement>是统一管理依赖版本，不会直接依赖，还需要在子工程中引入所需依赖(无需指定版本)
