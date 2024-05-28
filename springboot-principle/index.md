@@ -85,3 +85,23 @@ public class CommonConfig {
 * @ConditionalOnClass：判断环境中是否有对应字节码文件，才注册 bean 到 ioc 容器
 * @ConditionalOnMissingBean：判断环境中有没有对应的 bean（类型或名称），没有才注册 bean 到 ioc 容器
 * @ConditionalOnProperty：判断配置文件中有对应属性和值，才注册 bean 到 ioc 容器
+
+## 自定义 starter
+* 在实际开发中，经常会定义一些公共组件，提供给各个项目团队使用。而在 SpringBoot 的项目中，一般会将这些公共组件封装为 Springboot 的 starter
+* 例：
+* Maven: org.springframework.boot:spring-boot-autoconfigure:2.7.5 // 自动配置功能
+* Maven: org.springframework.boot:spring-boot-starter-web:2.7.5 // 依赖管理功能
+* Maven: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:2.2.2 // 自动配置功能
+* Maven: org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2 // 依赖管理功能
+
+## 需求
+* 自定义 aliyun-oss-spring-boot-starter，完成阿里云 oss 操作工具类 AliyunOSSUtils 的自动配置
+* 目标：引入起步依赖之后，想要使用阿里云 oss，注入 AliyunOSSUtils 直接使用即可
+
+## 步骤
+* 创建 aliyun-oss-spring-boot-starter 模块
+* 创建 aliyun-oss-spring-boot-autoconfigure 模块，在 starter 中引入该模块
+* 在 aliyun-oss-spring-boot-autoconfigure 模块中的定义自动配置功能，并w定义自动配置文件 META-INF/spring/xxxx.imports
+
+## 自动配置类
+* 自己封装的自动配置类要想被 spring 加载到要在一份固定的配置文件中配置，spring 启动的时候就会加载这份文件

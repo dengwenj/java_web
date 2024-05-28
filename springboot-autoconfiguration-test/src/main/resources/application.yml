@@ -1,0 +1,16 @@
+# 应用服务 WEB 访问端口
+server:
+  port: 1209
+
+aliyun:
+  oss:
+    endpoint: https://oss-cn-shanghai.aliyuncs.com
+    accessKeyId: 你的accessKeyId
+    accessKeySecret: 你的accessKeySecret
+    bucketName: pumu-upload
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
