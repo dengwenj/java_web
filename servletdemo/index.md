@@ -47,4 +47,6 @@
 ### IDEA 部署 Web 项目
 * 前面我们是在 Tomcat 的 webapps 目录新建应用程序目录，然后把静态资源和 Servlet 复制到相关目录下
 * 使用 IDEA 不需要我们复制，可以通过 IDEA 集成 Tomcat 服务器，实现自动部署
-* 
+
+### 如何导出 war 包
+* 项目完成后，有时需要打成 war 方便部署。war 包可以直接放入 Tomcat 的 webapps 目录中，启动 Tomcat 后自动解压，即可访问
