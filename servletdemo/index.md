@@ -25,10 +25,21 @@
 
 ### Servlet
 * Servlet：Server Applet 的简称，是服务器端的程序（代码、功能实现），可交互式的处理客户端发送到服务端的请求，并完成操作响应
-* 动态网页技术
-* JavaWeb 程序开发的基础，JavaEE 规范（一套接口）的一个组成部分
+* Servlet 是一种服务器端的‌Java应用程序，具有独立于平台和协议的特性，可以生成动态的Web页面‌
+* Servlet 是 JavaEE 规范之一。规范就是接口
+* Servlet 是 JavaWeb 三大组件之一。三大组件分别是：Servlet 程序、Filter 过滤器、Listener 监听器。
+* Servlet 是运行在服务器上的一个 java 小程序，它可以接收客户端发送过来的请求，并响应数据给客户端。
+* Servlet 不能独立运行，它的运行完全由Servlet引擎（容器（服务器 tomcat））控制。
 
 ### Servlet 作用
 * 接收客户端请求，完成操作
 * 动态生成网页（页面数据可变）
 * 将包含操作结果的动态网页响应给客户端
+* 用来接收、处理客户端请求、响应给浏览器的动态资源
+* 但servlet的实质就是java代码，通过java的API动态的向客户端输出内容
+
+### Servlet 工作原理
+* 客户端请求Servlet‌：当客户端发送请求到服务器时，服务器会查找对应的Servlet进行处理。
+* 初始化Servlet‌：实例化后，调用init()方法进行初始化。
+* 处理请求‌：根据请求的方法（如GET、POST等），调用相应的doGet()、doPost()等方法处理请求。
+* ‌销毁Servlet‌：当服务器关闭或应用程序停止时，销毁Servlet实例。
