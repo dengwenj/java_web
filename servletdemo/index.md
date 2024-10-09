@@ -17,6 +17,13 @@
 * Tomcat 是 Apache 软件基金会的 jakarta 项目中的一个核心项目，免费开源、并支持 Servlet 和 JSP 规范
 * 启动关闭 web 服务器： 打开终端，输入：cd /Users/xxxx/xxxx/apache-tomcat-x.x.xx/bin    开启 sudo sh startup.sh   关闭 sudo sh shutdown.sh
 * conf 里 server.xml 修改端口
+* 
+* 从http协议中的请求和响应可以得知，浏览器发出的请求是一个请求文本，而浏览器接收到的也应该是一个响应文本。
+  但是并不知道是如何转变的，只知道浏览器发送过来的请求也就是request，我们响应回去的就用response。
+  ①：Tomcat将http请求文本接收并解析，然后封装成HttpServletRequest类型的request对象，
+  所有的HTTP头数据读可以通过request对象调用对应的方法查询到。
+  ②：Tomcat同时会要响应的信息封装为HttpServletResponse类型的response对象，
+  通过设置response属性就可以控制要输出到浏览器的内容，然后将response交给tomcat，tomcat就会将其变成响应文本的格式发送给浏览器
 
 ### 项目部署及访问静态资源
 * Tomcat 是 web 服务器，我们的项目应用是部署在 webapps 下，然后通过特定的 url 访问
@@ -87,6 +94,13 @@
 * 2、响应头
 * 3、空行
 * 4、响应正文
+
+### Tomcat 与 Servlet 的关系
+* Tomcat 是一个 Servlet 容器，提供了运行和管理 Servlet 的环境。
+* Servlet 是服务器端的 Java 程序，用于处理客户端的请求和生成动态的 Web 内容。
+* 当一个 Web 应用程序中包含 Servlet 时，这个应用程序通常会被部署到 Tomcat 或类似的 Servlet 容器中。
+* Tomcat 负责管理 Servlet 的生命周期、处理请求和响应等任务，使得开发人员可以专注于编写 Servlet 程序而不必关心底层的服务器管理细节。
+* Tomcat 作为Servlet容器,负责处理客户请求,把请求传送给Servlet,并将Servlet的响应传送回给客户。
 
 ### Servlet 核心接口和类
 * 在 Servlet 体系结构中，除了实现 Servlet 接口，还可以通过继承 GenericServlet 或 HttpServlet 类，完成编写
