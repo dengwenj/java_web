@@ -125,3 +125,19 @@
 * doPost，用于 HTTP POST 请求
 * doPut，用于 HTTP PUT 请求
 * doDelete，用于 HTTP DELETE 请求
+```java
+// 必须和 http 协议有关联的
+public class MyHttpServlet extends HttpServlet {
+    // 根据不同的请求方法调用不同方法
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("这是 get 请求" + req.getRequestURI());
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("这是 post 请求" + req.getRequestURI());
+    }
+}
+```
