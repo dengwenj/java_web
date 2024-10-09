@@ -74,3 +74,40 @@
 * 2、多个请求和响应过程可以重叠进行
 * 3、增加了更多的请求头和响应头
 * 4、Connection 报头来控制时间
+
+### HTTP 请求报文
+* 由四部分组成：
+* 1、请求行 请求方法/地址 URI 协议/版本
+* 2、请求头
+* 3、空行
+* 4、请求正文
+
+### HTTP 响应报文
+* 1、状态行
+* 2、响应头
+* 3、空行
+* 4、响应正文
+
+### Servlet 核心接口和类
+* 在 Servlet 体系结构中，除了实现 Servlet 接口，还可以通过继承 GenericServlet 或 HttpServlet 类，完成编写
+
+### Servlet 接口
+* 在 Servlet API 中最重要的是 Servlet 接口，所有 Servlet 都会直接或间接的与该接口发生联系，或是直接实现该接口，或间接继承自实现了该接口的类
+* 该接口包含以下五个方法：
+* init(ServletConfig config)
+* ServletConfig getServletConfig()
+* service(ServletRequest req, ServletResponse res)
+* String getServletInfo()
+* destroy()
+
+### GenericServlet 抽象类
+* GenericServlet 使编写 Servlet 变得更容易，它提供生命周期方法 init 和 destroy 的简单实现，
+* 要编写一般的 Servlet，只需重写抽象 service 方法即可
+
+### HttpServlet 类
+* HttpServlet 是继承 GenericServlet 的基础上进一步的扩展
+* 提供将要被子类化以创建适用于 Web 站点的 HTTP servlet 的抽象类。HttpServlet 的子类至少必须重写一个方法，该方法通常是以下这些方法之一：
+* doGet，如果 servlet 支持 HTTP get 请求
+* doPost，用于 HTTP POST 请求
+* doPut，用于 HTTP PUT 请求
+* doDelete，用于 HTTP DELETE 请求
