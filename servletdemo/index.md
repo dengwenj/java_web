@@ -43,3 +43,8 @@
 * 初始化Servlet‌：实例化后，调用init()方法进行初始化。
 * 处理请求‌：根据请求的方法（如GET、POST等），调用相应的doGet()、doPost()等方法处理请求。
 * ‌销毁Servlet‌：当服务器关闭或应用程序停止时，销毁Servlet实例。
+
+### IDEA 部署 Web 项目
+* 前面我们是在 Tomcat 的 webapps 目录新建应用程序目录，然后把静态资源和 Servlet 复制到相关目录下
+* 使用 IDEA 不需要我们复制，可以通过 IDEA 集成 Tomcat 服务器，实现自动部署
+* 
