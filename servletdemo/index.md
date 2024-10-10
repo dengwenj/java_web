@@ -200,3 +200,27 @@ public class MyHttpServlet extends HttpServlet {
 * value：配置 url 路径，可以配置多个
 * urlPatterns：配置 url 路径，和 value 作用一样，不能同时使用
 * loadOnStartup：配置 Servlet 的创建的时机，如果是 0 或者正数启动程序时创建，如果是负数，则访问时创建，数字越小优先级越高
+
+### HttpServletRequest 和 HttpServletResponse
+```java
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 对 request 请求对象设置统一的编码
+        req.setCharacterEncoding("UTF-8");
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        System.out.println("username post:" + username);
+        System.out.println("password post:" + password);
+  
+        // 响应
+        // 服务端设置的编码格式，防止乱码
+        //resp.setCharacterEncoding("UTF-8");
+        // 传递给客户端的编码格式，让客户端知道
+        //resp.setHeader("Content-type", "text/html;charset=UTF-8");
+        // 上面的可见简化成这样
+        resp.setContentType("text/html;charset=UTF-8");
+  
+        PrintWriter writer = resp.getWriter();
+        writer.println("注册成功！");
+    }
+```

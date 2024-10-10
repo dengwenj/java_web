@@ -32,8 +32,8 @@
         <url-pattern>/get</url-pattern>
     </servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>http</servlet-name>
-        <url-pattern>/*</url-pattern>
-    </servlet-mapping>
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>http</servlet-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </servlet-mapping>-->
 </web-app>
