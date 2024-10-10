@@ -181,7 +181,8 @@ public class MyHttpServlet extends HttpServlet {
 }
 ```
 
-### web.xml 配置
+### Servlet 两种配置方式
+### 1、web.xml 配置
 * url-pattern 定义匹配规则：
 * 1、精确匹配： /具体的名称  只有 url 路径是具体的名称的时候才会触发 Servlet
 * 2、后缀匹配： *.xxx   只要是以 xxx 结尾的就匹配触发 Servlet
@@ -193,3 +194,9 @@ public class MyHttpServlet extends HttpServlet {
 * 2、它的值必须是一个整数，表示 servlet 被加载的先后顺序
 * 3、如果该元素的值为负数或者没有设置，则容器会当 servlet 被请求时再加载
 * 4、如果值为正整数或者 0 时，表示容器在应用启动时就加载并初始化这个 servlet，值越小，servlet 的优先级越高，就越先被加载。值相同时，容器就会自己选择顺序来加载
+
+### 2、注解配置
+* name：Servlet 名字（可选）
+* value：配置 url 路径，可以配置多个
+* urlPatterns：配置 url 路径，和 value 作用一样，不能同时使用
+* loadOnStartup：配置 Servlet 的创建的时机，如果是 0 或者正数启动程序时创建，如果是负数，则访问时创建，数字越小优先级越高
