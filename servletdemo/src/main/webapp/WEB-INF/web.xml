@@ -6,6 +6,7 @@
     <servlet>
         <servlet-name>my</servlet-name>
         <servlet-class>vip.dengwj.servletdemo.HelloServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>my</servlet-name>
@@ -15,6 +16,7 @@
     <servlet>
         <servlet-name>gs</servlet-name>
         <servlet-class>vip.dengwj.servletdemo.GenServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>gs</servlet-name>
@@ -28,5 +30,10 @@
     <servlet-mapping>
         <servlet-name>http</servlet-name>
         <url-pattern>/get</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>http</servlet-name>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 </web-app>
