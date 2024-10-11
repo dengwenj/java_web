@@ -297,3 +297,10 @@ public class BServlet extends HttpServlet {
 * 2、初始化：在初始化阶段，init() 方法会被调用，这个方法在 javax.servlet.Servlet 接口中定义，其中方法以一个 ServletConfig 类型的对象作为参数。只执行一次
 * 3、服务：当客户端有一个请求时，容器就会将请求 ServletRequest 与响应 ServletResponse 对象传给 Servlet，以参数的形式传给 service 方法。此方法会执行多次
 * 4、销毁：当 Servlet 容器停止或者重新启动都会引起销毁 Servlet 对象并调用 destroy 方法。destroy 方法执行一次
+
+### Servlet 线程安全问题
+* Servlet 在访问之后，会执行实例化操作，创建一个 Servlet 对象。而我们 Tomcat 容器可以同时多个线程并发访问同一个 Servlet，如果在方法中对成员变量做修改操作，就会有线程安全问题
+* 共享的变量可以会引发线程安全问题，3种解决办法：
+* 1、synchronized：将存在线程安全问题的代码放到同步代码块中
+* 2、实现 SingleThreadModel 接口：servlet 实现 SingleThreadModel 接口后，每个线程都会创建 servlet 实例，这样每个客户端请求就不存在共享资源的问题，但是 servlet 响应客户端请求的效率太低，所以已淘汰
+* 3、尽可能使用局部变量（推荐）
