@@ -11,7 +11,12 @@ import java.io.IOException;
 public class AServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/b").forward(req, resp);
+        //req.setAttribute("username", "pumu");
+        //req.getRequestDispatcher("/b").forward(req, resp);
+
+        System.out.println("req.getContextPath()" + req.getContextPath());
+        resp.sendRedirect(req.getContextPath() + "/b?username=pm");
+        //resp.sendRedirect("http://www.baidu.com");
     }
 
     @Override

@@ -234,22 +234,29 @@ public class MyHttpServlet extends HttpServlet {
 ```java
 @WebServlet(value = "/a")
 public class AServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/b").forward(req, resp);
-    }
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    //req.setAttribute("username", "pumu");
+    //req.getRequestDispatcher("/b").forward(req, resp);
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
-    }
+    System.out.println("req.getContextPath()" + req.getContextPath());
+    resp.sendRedirect(req.getContextPath() + "/b?username=pm");
+    //resp.sendRedirect("http://www.baidu.com");
+  }
+
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    super.doPost(req, resp);
+  }
 }
 
 @WebServlet("/b")
 public class BServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    System.out.println("转发到 B");
+    System.out.println(req.getAttribute("username"));
+    System.out.println("BBBBBB");
+    System.out.println(req.getParameter("username"));
   }
 
   @Override
@@ -258,3 +265,28 @@ public class BServlet extends HttpServlet {
   }
 }
 ```
+
+### 数据传递
+* forward 表示一次请求，是在服务器内部跳转，可以共享同一次 request 作用域中的数据
+* request.setAttribute(key, value)，key 为 String， value 为 Object
+* request.getAttribute(key)
+
+### 转发特点
+* 转发是服务器行为
+* 转发是浏览器只做了一次访问请求
+* 转发浏览器地址不变
+* 转发两次跳转之间传输的信息不回丢失，所以可以通过 request 进行数据的传递
+* 转发只能将请求转发给同一个 web 应用中的组件
+
+### 重定向
+* 重定向作用是在客户端，客户端将请求发送给服务器后，服务器响应给客户端一个新的请求地址，客户端重新发送新请求
+* response.sendRedirect("目标 URI")
+* URI：统一资源标识符，用来表示服务器中定位一个资源，资源在 web项目中的路径("/xxx/xxx")
+* 数据传递：resp.sendRedirect(req.getContextPath() + "/b?username=pm")，获取 req.getParameter("username")
+
+### 重定向特点
+* 重定向是客户端行为
+* 重定向是浏览器做了至少两次的访问请求
+* 重定向浏览器地址改变
+* 重定向两次跳转之间传输的信息会丢失（request 范围）
+* 重定向可以跳转到任何资源

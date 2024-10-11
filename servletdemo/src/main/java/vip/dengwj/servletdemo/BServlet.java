@@ -11,7 +11,9 @@ import java.io.IOException;
 public class BServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("转发到 B");
+        System.out.println(req.getAttribute("username"));
+        System.out.println("BBBBBB");
+        System.out.println(req.getParameter("username"));
     }
 
     @Override
