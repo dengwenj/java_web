@@ -30,7 +30,7 @@
 * 创建项目，在 webapps 中创建文件夹
 * 访问：http://localhost:7070/demo
 
-### Servlet
+### Servlet（服务器小程序）
 * Servlet：Server Applet 的简称，是服务器端的程序（代码、功能实现），可交互式的处理客户端发送到服务端的请求，并完成操作响应
 * Servlet 是一种服务器端的‌Java应用程序，具有独立于平台和协议的特性，可以生成动态的Web页面‌
 * Servlet 是 JavaEE 规范之一。规范就是接口
@@ -100,7 +100,7 @@
 * Servlet 是服务器端的 Java 程序，用于处理客户端的请求和生成动态的 Web 内容。
 * 当一个 Web 应用程序中包含 Servlet 时，这个应用程序通常会被部署到 Tomcat 或类似的 Servlet 容器中。
 * Tomcat 负责管理 Servlet 的生命周期、处理请求和响应等任务，使得开发人员可以专注于编写 Servlet 程序而不必关心底层的服务器管理细节。
-* Tomcat 作为Servlet容器,负责处理客户请求,把请求传送给Servlet,并将Servlet的响应传送回给客户。
+* Tomcat 作为Servlet容器,负责处理客户请求,把请求传送给Servlet,并将Servlet的响应传送回给客户。（重要！！！！！）
 
 ### Servlet 核心接口和类
 * 在 Servlet 体系结构中，除了实现 Servlet 接口，还可以通过继承 GenericServlet 或 HttpServlet 类，完成编写
@@ -182,7 +182,7 @@ public class MyHttpServlet extends HttpServlet {
 ```
 
 ### Servlet 两种配置方式
-### 1、web.xml 配置
+### 1、web.xml 配置（Servlet2.5以前）
 * url-pattern 定义匹配规则：
 * 1、精确匹配： /具体的名称  只有 url 路径是具体的名称的时候才会触发 Servlet
 * 2、后缀匹配： *.xxx   只要是以 xxx 结尾的就匹配触发 Servlet
@@ -195,7 +195,7 @@ public class MyHttpServlet extends HttpServlet {
 * 3、如果该元素的值为负数或者没有设置，则容器会当 servlet 被请求时再加载
 * 4、如果值为正整数或者 0 时，表示容器在应用启动时就加载并初始化这个 servlet，值越小，servlet 的优先级越高，就越先被加载。值相同时，容器就会自己选择顺序来加载
 
-### 2、注解配置
+### 2、注解配置（Servlet3.0以上）
 * name：Servlet 名字（可选）
 * value：配置 url 路径，可以配置多个
 * urlPatterns：配置 url 路径，和 value 作用一样，不能同时使用
@@ -223,4 +223,38 @@ public class MyHttpServlet extends HttpServlet {
         PrintWriter writer = resp.getWriter();
         writer.println("注册成功！");
     }
+```
+
+### 转发
+* 转发的作用在服务器端，将请求发送给服务器上的其他资源，以共同完成一次请求的处理
+
+### 页面跳转
+* req.getRequestDispatcher("/b").forward(req, resp);
+* 使用 forward 跳转时，是在服务器内部跳转，地址栏不发生变化，属于同一次请求
+```java
+@WebServlet(value = "/a")
+public class AServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/b").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp);
+    }
+}
+
+@WebServlet("/b")
+public class BServlet extends HttpServlet {
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    System.out.println("转发到 B");
+  }
+
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    super.doPost(req, resp);
+  }
+}
 ```
