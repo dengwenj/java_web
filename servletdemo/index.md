@@ -290,3 +290,10 @@ public class BServlet extends HttpServlet {
 * 重定向浏览器地址改变
 * 重定向两次跳转之间传输的信息会丢失（request 范围）
 * 重定向可以跳转到任何资源
+
+### Servlet 生命周期
+* 生命周期四个阶段
+* 1、实例化：当用户第一次访问 Servlet 时，由容器调用 Servlet 的构造器创建具体的 Servlet 对象。也可以在容器启动之后立刻创建实例，使用 loadOnStartup。只执行一次
+* 2、初始化：在初始化阶段，init() 方法会被调用，这个方法在 javax.servlet.Servlet 接口中定义，其中方法以一个 ServletConfig 类型的对象作为参数。只执行一次
+* 3、服务：当客户端有一个请求时，容器就会将请求 ServletRequest 与响应 ServletResponse 对象传给 Servlet，以参数的形式传给 service 方法。此方法会执行多次
+* 4、销毁：当 Servlet 容器停止或者重新启动都会引起销毁 Servlet 对象并调用 destroy 方法。destroy 方法执行一次
