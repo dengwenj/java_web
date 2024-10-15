@@ -7,12 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
 
 @WebServlet("/cookie")
 public class CookieServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Cookie cookie = new Cookie("username", "朴睦");
+        Cookie cookie = new Cookie("username", URLEncoder.encode("朴睦", "UTF-8"));
         Cookie cookie1 = new Cookie("password", "123456");
         // 设置 Cookie 的路径
         cookie.setPath("/webproject/get1");

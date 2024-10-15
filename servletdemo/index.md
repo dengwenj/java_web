@@ -338,5 +338,19 @@ public class Cookie2Servlet extends HttpServlet {
     }
   }
 }
-
 ```
+
+### Cookie 编码与解码
+* Cookie 默认不支持中文，只能包含 ASCII 字符，所以 Cookie 需要对 Unicode 字符进行编码，否则会出现乱码
+* 编码可以使用 java.net.URLEncoder 类的 encode(String str, String encoding) 
+* 解码使用 java.net.URLDecoder 类的 decode(String str, String encoding)
+
+### Cookie 优点和缺点
+* 优点：
+* 1、可配置到期规则
+* 2、简单性：Cookie 是一种基于文本的轻量结构，包含简单的键值对
+* 3、数据持久性：Cookie 默认在过期之前是可以一直存在浏览器上的
+* 缺点：
+* 1、大小受到限制：大多数浏览器对 Cookie 的大小有 4k、8k 字节的限制
+* 2、用户配置为禁用：有些用户禁用了浏览器设备接收 Cookie 的能力，因此限制了这一功能
+* 3、潜在的安全风险：Cookie 可能会被篡改

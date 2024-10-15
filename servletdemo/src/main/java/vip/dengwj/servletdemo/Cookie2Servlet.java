@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLDecoder;
 
 @WebServlet("/get1")
 public class Cookie2Servlet extends HttpServlet {
@@ -15,7 +16,7 @@ public class Cookie2Servlet extends HttpServlet {
         Cookie[] cookies = req.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                System.out.println("cookie: " + cookie.getName() + "; value: " + cookie.getValue());
+                System.out.println("cookie: " + cookie.getName() + "; value: " + URLDecoder.decode(cookie.getValue(), "UTF-8"));
             }
         }
     }
