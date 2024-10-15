@@ -22,5 +22,10 @@ public class SessionServlet extends HttpServlet {
         session.removeAttribute("username");
         Object username1 = session.getAttribute("username");
         System.out.println(username1);
+
+        //设置最大有效事件（单位：秒）
+        session.setMaxInactiveInterval(3600);
+        // 立即失效
+        session.invalidate();
     }
 }

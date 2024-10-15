@@ -373,3 +373,10 @@ public class Cookie2Servlet extends HttpServlet {
 ### Session 与 Request 应用区别
 * request 是一次请求有效，请求改变，则 request 改变
 * session 是一次火花有效，浏览器改变，则 session 改变
+
+### Session 生命周期
+* 开始：第一次使用到 Session 的请求产生，则创建 Session
+* 结束：
+* 1、浏览器关闭，则失效
+* 2、Session 超时，则失效：session.setMaxInactiveInterval(seconds); 设置最大有效事件（单位：秒）
+* 3、手工销毁，则失效：session.invalidate(); 登录退出、注销
