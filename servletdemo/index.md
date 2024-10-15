@@ -304,3 +304,39 @@ public class BServlet extends HttpServlet {
 * 1、synchronized：将存在线程安全问题的代码放到同步代码块中
 * 2、实现 SingleThreadModel 接口：servlet 实现 SingleThreadModel 接口后，每个线程都会创建 servlet 实例，这样每个客户端请求就不存在共享资源的问题，但是 servlet 响应客户端请求的效率太低，所以已淘汰
 * 3、尽可能使用局部变量（推荐）
+
+### Cookie
+* 创建 Cookie
+* 修改 Cookie（只需要保证 Cookie 的名和路径一致即可修改）
+* 获取 Cookie
+```java
+@WebServlet("/cookie")
+public class CookieServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Cookie cookie = new Cookie("username", "朴睦");
+        Cookie cookie1 = new Cookie("password", "123456");
+        // 设置 Cookie 的路径
+        cookie.setPath("/webproject/get1");
+        cookie1.setPath("/webproject");
+        // 设置 Cookie 的过期时间
+        cookie.setMaxAge(3600);
+        cookie1.setMaxAge(3600);
+        resp.addCookie(cookie);
+        resp.addCookie(cookie1);
+    }
+}
+@WebServlet("/get1")
+public class Cookie2Servlet extends HttpServlet {
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    Cookie[] cookies = req.getCookies();
+    if (cookies != null) {
+      for (Cookie cookie : cookies) {
+        System.out.println("cookie: " + cookie.getName() + "; value: " + cookie.getValue());
+      }
+    }
+  }
+}
+
+```
