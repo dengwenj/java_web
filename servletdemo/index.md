@@ -354,3 +354,12 @@ public class Cookie2Servlet extends HttpServlet {
 * 1、大小受到限制：大多数浏览器对 Cookie 的大小有 4k、8k 字节的限制
 * 2、用户配置为禁用：有些用户禁用了浏览器设备接收 Cookie 的能力，因此限制了这一功能
 * 3、潜在的安全风险：Cookie 可能会被篡改
+
+### Session 对象
+* Session 概述：Session 用于记录用户的状态，Session 指的是在一段时间内，单个客户端与 Web 服务器的一连串相关的交互过程
+* 在一个 Session 中，客户可能会多次请求访问同一个资源，也有可能请求访问各种不同的服务器资源
+
+### Session 原理
+* 服务器会为每一次会话分配一个 Session 对象
+* 同一个浏览器发起的多次请求，同属于一次会话（Session），关闭浏览器下次打开 Session 就不一样了
+* 首次使用到 Session 时，服务器会自动创建 Session，并创建 Cookie 存储 SessionId 发送回客户端
