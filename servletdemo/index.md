@@ -363,3 +363,13 @@ public class Cookie2Servlet extends HttpServlet {
 * 服务器会为每一次会话分配一个 Session 对象
 * 同一个浏览器发起的多次请求，同属于一次会话（Session），关闭浏览器下次打开 Session 就不一样了
 * 首次使用到 Session 时，服务器会自动创建 Session，并创建 Cookie 存储 SessionId 发送回客户端
+
+### Session 使用
+* Session 作用域：拥有存储数据的空间，作用范围是一次会话有效（同属于一次会话当中，获取的 session 是相同的，地址是一样的）
+* 一次会话是使用同一个浏览器发送的多次请求。一旦浏览器关闭，则结束会话
+* 可以将数据存入 Session中，在一次会话的任意位置进行获取！！！
+* 可传递任何数据
+
+### Session 与 Request 应用区别
+* request 是一次请求有效，请求改变，则 request 改变
+* session 是一次火花有效，浏览器改变，则 session 改变
