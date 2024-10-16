@@ -405,3 +405,36 @@ public class Cookie2Servlet extends HttpServlet {
 ### ServletContext 特点
 * 唯一性：一个应用对应一个 servlet 上下文
 * 生命周期：只要容器不关闭或者应用不卸载，servlet 上下文就一直存在
+
+### 作用域总结
+* HttpServletRequest：一次请求，请求响应之前有效
+* HttpSession：一次会话开始，浏览器不关闭或不超时之前有效
+* ServletContext：服务器启动开始，服务器停止之前有效
+
+### 过滤器（Filter）
+* 过滤器是处于客户端与服务器目标资源之间的一道过滤技术
+
+### 过滤器的作用
+* 执行地位在 Servlet 之前，客户端发送请求时，会先经过 Filter，再到达目标 Servlet 中，响应时，会根据执行流程再次反向执行 Filter
+* 可以解决多个 Servlet 共性代码的冗余问题（例如：乱码处理、登录验证）
+```java
+@WebFilter("/filter1")
+public class MyFilter implements Filter {
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        Filter.super.init(filterConfig);
+    }
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        System.out.println("MyFilter start");
+        filterChain.doFilter(servletRequest, servletResponse);
+        System.out.println("MyFilter end");
+    }
+
+    @Override
+    public void destroy() {
+        Filter.super.destroy();
+    }
+}
+```
