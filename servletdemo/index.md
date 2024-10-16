@@ -458,3 +458,16 @@ public class MyFilter implements Filter {
 * 1、精确拦截匹配，比如：/index.html，/test
 * 2、后缀拦截匹配，比如：*.html
 * 3、通配符拦截匹配 /*，表示拦截所有，/aaa/bbb/ *
+
+### 过滤器链和优先级
+* 过滤器链：客户端对服务器请求之后，服务器调用 Servlet 之前会执行一组过滤器（多个过滤器），那么这组过滤器就称为一条过滤器链
+* 每个过滤器实现某个特定的功能，当第一个 Filter 的 doFilter 方法被调用时，Web 服务器会创建一个代表 Filter 链的 FilterChain 对象传递给该方法，
+* 在 doFilter 方法中，开发人员如果调用了 FilterChain 对象的 doFilter 方法，则 Web 服务器会检查FilterChain 对象中是否还有 filter，如果有，则调用第二个 filter，如果没有，则调用目标资源
+
+### 过滤器优先级
+* 在一个 Web 应用中，可以开发编写多个 Filter，这些 Filter 组合起来称之为一个 Filter 链
+* 优先级：
+* 如果为注解的话，是按照类全名称的字符串顺序决定作用顺序
+* 如果 web.xml，按照 filter-mapping 注册顺序，从上往下
+* web.xml 配置高于注解方式
+* 如果注解和 web.xml 同时配置，会创建多个过滤器对象，造成过滤多次
