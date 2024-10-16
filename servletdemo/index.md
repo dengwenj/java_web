@@ -369,6 +369,7 @@ public class Cookie2Servlet extends HttpServlet {
 * 一次会话是使用同一个浏览器发送的多次请求。一旦浏览器关闭，则结束会话
 * 可以将数据存入 Session中，在一次会话的任意位置进行获取！！！
 * 可传递任何数据
+* sessionId 是用来记录是不是同一次会话
 
 ### Session 与 Request 应用区别
 * request 是一次请求有效，请求改变，则 request 改变
@@ -380,3 +381,27 @@ public class Cookie2Servlet extends HttpServlet {
 * 1、浏览器关闭，则失效
 * 2、Session 超时，则失效：session.setMaxInactiveInterval(seconds); 设置最大有效事件（单位：秒）
 * 3、手工销毁，则失效：session.invalidate(); 登录退出、注销
+
+### 浏览器禁用 Cookie 解决方案
+* 服务器在默认情况下，会使用 Cookie 的方式将 sessionID 发送给浏览器，如果用户禁止 Cookie，则 sessionID 不会被浏览器保存，此时服务器可以使用如 URL 重写这样的方式来发送 sessionID
+* response.encodeRedirectURL(String url); 生成重写的 URL
+
+### ServletContext 对象
+* ServletContext 概述
+* 1、全局对象，也拥有作用域，对应一个 Tomcat 中的 Web 应用
+* 2、当 Web 服务器启动时，会为每一个 Web 应用程序创建一块共享的存储区域（ServletContext）
+* 3、ServletContext 在 Web 服务器启动时创建，服务器关闭时销毁
+
+### 获取 ServletContext 对象
+* GenericServlet 提供了 getServletContext() 方法，（推荐）this.getServletContext()
+* HttpServletRequest 提供了 getServletContext() 方法（推荐）
+* HttpSession 提供了 getServletContext() 方法
+
+### ServletContext 作用
+* 获取当前项目在服务器发布的真实路径：servletContext.getRealPath("/")
+* 获取当前项目上下文路径（应用程序名）：servletContext.getContextPath();
+* 全局容器：servletContext.setAttribute("name", value)
+
+### ServletContext 特点
+* 唯一性：一个应用对应一个 servlet 上下文
+* 生命周期：只要容器不关闭或者应用不卸载，servlet 上下文就一直存在
