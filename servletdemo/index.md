@@ -224,6 +224,7 @@ public class MyHttpServlet extends HttpServlet {
         writer.println("注册成功！");
     }
 ```
+* 在 Tomcat7 及以下版本，客户端以 UTF-8 的编码传输数据到服务器端，而服务器端的 request 对象使用的是ISO08859-1 这个字符编码来接收数据，这样就会导致乱码，使用 req.setCharacterEncoding("UTF-8"); 解决
 
 ### 转发
 * 转发的作用在服务器端，将请求发送给服务器上的其他资源，以共同完成一次请求的处理
