@@ -452,3 +452,9 @@ public class MyFilter implements Filter {
     <url-pattern>/xmlfilter</url-pattern>
 </filter-mapping>
 ```
+
+### 关于拦截路径
+* 过滤器的拦截路径通常有三种形式：
+* 1、精确拦截匹配，比如：/index.html，/test
+* 2、后缀拦截匹配，比如：*.html
+* 3、通配符拦截匹配 /*，表示拦截所有，/aaa/bbb/ *
