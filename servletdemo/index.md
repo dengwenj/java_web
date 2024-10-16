@@ -438,3 +438,17 @@ public class MyFilter implements Filter {
     }
 }
 ```
+
+### 过滤器配置
+* 注解配置：在自定义的 Filter 类上使用注解 @WebFilter(value = "/test")
+* xml 配置
+```xml
+<filter>
+    <filter-name>xml</filter-name>
+    <filter-class>vip.dengwj.servletdemo.filter.XmlFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>xml</filter-name>
+    <url-pattern>/xmlfilter</url-pattern>
+</filter-mapping>
+```
